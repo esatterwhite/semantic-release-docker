@@ -1,0 +1,10 @@
+*.tgz
+compose/
+node_modules/
+coverage/
+release.config.js
+pnpm-lock.yaml
+.github/
+.nyc_output/
+.dockerignore
+Dockerfile

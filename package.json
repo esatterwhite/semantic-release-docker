@@ -1,0 +1,95 @@
+{
+  "name": "@codedependant/semantic-release-docker",
+  "private": false,
+  "version": "0.0.0",
+  "description": "docker package",
+  "main": "index.js",
+  "scripts": {
+    "test": "docker-compose -f compose/base.yml -f compose/test.yml up --exit-code-from semantic-release --force-recreate --remove-orphans",
+    "start": "docker-compose -f compose/base.yml -f compose/dev.yml up --force-recreate --remove-orphans --build",
+    "stop": "docker-compose -f compose/base.yml -f compose/dev.yml down",
+    "tap": "tap",
+    "lint": "eslint .",
+    "lint:fix": "npm run lint -- --fix",
+    "pretap": "npm run lint",
+    "release": "semantic-release"
+  },
+  "keywords": [
+    "semantic-release"
+  ],
+  "author": "Eric Satterwhite <esatterwhite@wi.rr.com>",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/esatterwhite/semantic-release-docker.git"
+  },
+  "eslintConfig": {
+    "root": true,
+    "extends": "@esatterwhite/eslint-config-reasonable",
+    "ignorePatterns": [
+      "node_modules/",
+      "test/fixture/",
+      "coverage/",
+      ".nyc_output/",
+      "env/",
+      "doc/"
+    ],
+    "rules": {
+      "object-shorthand": 0,
+      "no-unused-vars": [
+        "error",
+        {
+          "varsIgnorePattern": "_"
+        }
+      ],
+      "quote-props": [
+        2,
+        "as-needed"
+      ]
+    }
+  },
+  "tap": {
+    "esm": false,
+    "ts": false,
+    "jsx": false,
+    "timeout": 60,
+    "browser": false,
+    "check-coverage": true,
+    "lines": 95,
+    "branches": 95,
+    "statements": 95,
+    "functions": 95,
+    "files": [
+      "test/unit",
+      "test/integration"
+    ],
+    "coverage-report": [
+      "text",
+      "text-summary",
+      "json",
+      "html"
+    ],
+    "nyc-arg": [
+      "--exclude=coverage/",
+      "--exclude=test/"
+    ]
+  },
+  "devDependencies": {
+    "@esatterwhite/eslint-config-reasonable": "^1.0.2",
+    "@semantic-release/changelog": "^5.0.1",
+    "@semantic-release/git": "^9.0.0",
+    "@semantic-release/github": "^7.0.7",
+    "eslint": "^7.4.0",
+    "sinon": "^9.0.2",
+    "tap": "^14.10.7"
+  },
+  "dependencies": {
+    "@semantic-release/error": "^2.2.0",
+    "execa": "^4.0.2",
+    "semantic-release": "^17.1.1",
+    "semver": "^7.3.2"
+  }
+}

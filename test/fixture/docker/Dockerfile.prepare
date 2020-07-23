@@ -1,0 +1,4 @@
+FROM debian:buster-slim
+COPY . /opt/prepare
+WORKDIR /opt/prepare
+CMD ["echo", "$PWD"]
