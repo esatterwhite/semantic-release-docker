@@ -53,6 +53,27 @@ test('build-config', async (t) => {
 
     {
       const config = await buildConfig('id', {
+        project: 'kittens'
+      , image: 'override'
+      , dockerfile: 'Dockerfile.test'
+      }, {
+        cwd: path.join(t.testdirName, 'scoped')
+      })
+      tt.deepEqual(config, {
+        dockerfile: 'Dockerfile.test'
+      , nocache: false
+      , tags: ['latest', '{major}-latest', '{version}']
+      , args: {}
+      , registry: null
+      , name: 'override'
+      , project: 'kittens'
+      , build: 'id'
+      , context: '.'
+      })
+    }
+
+    {
+      const config = await buildConfig('id', {
         project: null
       , image: 'override'
       , dockerfile: 'Dockerfile.test'
