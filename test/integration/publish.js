@@ -31,11 +31,13 @@ test('steps::publish', async (t) => {
     }
 
     const config = await buildConfig(build_id, {
-      registry: DOCKER_REGISTRY_HOST
-    , project: 'docker-publish'
-    , image: 'real'
-    , tags: ['{previous.major}-previous', '{major}-foobar', '{version}']
-    , dockerfile: 'docker/Dockerfile.publish'
+      docker: {
+        registry: DOCKER_REGISTRY_HOST
+      , project: 'docker-publish'
+      , image: 'real'
+      , tags: ['{previous.major}-previous', '{major}-foobar', '{version}']
+      , dockerfile: 'docker/Dockerfile.publish'
+      }
     }, context)
 
     const auth = await verify(config, context)

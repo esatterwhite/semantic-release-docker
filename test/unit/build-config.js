@@ -53,9 +53,11 @@ test('build-config', async (t) => {
 
     {
       const config = await buildConfig('id', {
-        project: 'kittens'
-      , image: 'override'
-      , dockerfile: 'Dockerfile.test'
+        docker: {
+          project: 'kittens'
+        , image: 'override'
+        , dockerfile: 'Dockerfile.test'
+        }
       }, {
         cwd: path.join(t.testdirName, 'scoped')
       })
@@ -74,9 +76,11 @@ test('build-config', async (t) => {
 
     {
       const config = await buildConfig('id', {
-        project: null
-      , image: 'override'
-      , dockerfile: 'Dockerfile.test'
+        docker: {
+          project: null
+        , image: 'override'
+        , dockerfile: 'Dockerfile.test'
+        }
       }, {
         cwd: path.join(t.testdirName, 'scoped')
       })

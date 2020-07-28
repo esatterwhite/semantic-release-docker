@@ -28,11 +28,13 @@ test('steps::prepare', async (t) => {
     }
 
     const config = await buildConfig(build_id, {
-      registry: DOCKER_REGISTRY_HOST
-    , project: 'docker-prepare'
-    , image: 'fake'
-    , args: {MY_VARIABLE: '1'}
-    , dockerfile: 'docker/Dockerfile.prepare'
+      docker: {
+        registry: DOCKER_REGISTRY_HOST
+      , project: 'docker-prepare'
+      , image: 'fake'
+      , args: {MY_VARIABLE: '1'}
+      , dockerfile: 'docker/Dockerfile.prepare'
+      }
     }, context)
 
     const auth = await verify(config, context)

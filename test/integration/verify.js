@@ -70,7 +70,9 @@ test('steps::verify', async (t) => {
       }
     }
     const config = await buildConfig(build_id, {
-      registry: DOCKER_REGISTRY_HOST
+      docker: {
+        registry: DOCKER_REGISTRY_HOST
+      }
     }, context)
     tt.resolves(verify(config, context))
   })
@@ -89,7 +91,9 @@ test('steps::verify', async (t) => {
       }
     }
     const config = await buildConfig(build_id, {
-      registry: DOCKER_REGISTRY_HOST
+      docker: {
+        registry: DOCKER_REGISTRY_HOST
+      }
     }, context)
     tt.resolves(verify(config, context))
   })
@@ -147,7 +151,9 @@ test('steps::verify', async (t) => {
     }
 
     const config = await buildConfig(build_id, {
-      registry: DOCKER_REGISTRY_HOST
+      docker: {
+        registry: DOCKER_REGISTRY_HOST
+      }
     }, context)
     tt.rejects(verify(config, context), {
       code: 'EINVAL'
@@ -169,8 +175,10 @@ test('steps::verify', async (t) => {
     }
 
     const config = await buildConfig(build_id, {
-      registry: DOCKER_REGISTRY_HOST
-    , dockerfile: 'Notafile'
+      docker: {
+        registry: DOCKER_REGISTRY_HOST
+      , dockerfile: 'Notafile'
+      }
     }, context)
 
     await tt.rejects(verify(config, context), {
