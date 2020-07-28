@@ -42,14 +42,14 @@ omitted, it is assumed the docker daemon is already authenticated with the targe
 
 ### Options
 
-| Option         | Description                                                                                                                                 | Default
-| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------- | --------
-| tags           | _Optional_. An array of strings allowing to specify additional tags to apply to the image.                                                  | [`latest`, `{major}-latest`, `{version}`] |
-| image          | _Optional_. The name of the image to release.                                                                                               | Parsed from package.json `name` property
-| registry       | _Optional_. The hostname and port used by the the registry in format `hostname[:port]`. Omit the port if the registry uses the default port | `null` (dockerhub)
-| project        | _Optional_. The project or repository name to publish the image to                                                                          | For scoped packages, the scope will be used, otherwise `null`
-| dockerfile     | _Optional_. The path, relative to `$PWD` to a Docker file to build the target image with                                                    | `Dockerfile`
-| context        | _Optional_. A path, relative to `$PWD` to use as the build context A                                                                        | `.`
+| Option                | Description                                                                                                                                 | Default
+| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- | --------
+| docker.tags           | _Optional_. An array of strings allowing to specify additional tags to apply to the image.                                                  | [`latest`, `{major}-latest`, `{version}`] |
+| docker.image          | _Optional_. The name of the image to release.                                                                                               | Parsed from package.json `name` property
+| docker.registry       | _Optional_. The hostname and port used by the the registry in format `hostname[:port]`. Omit the port if the registry uses the default port | `null` (dockerhub)
+| docker.project        | _Optional_. The project or repository name to publish the image to                                                                          | For scoped packages, the scope will be used, otherwise `null`
+| docker.dockerfile     | _Optional_. The path, relative to `$PWD` to a Docker file to build the target image with                                                    | `Dockerfile`
+| docker.context        | _Optional_. A path, relative to `$PWD` to use as the build context A                                                                        | `.`
 
 ## Usage
 
@@ -60,12 +60,14 @@ full configuration:
   "release": {
     "plugins": [
       ["@codedependant/semantic-release-docker", {
-        "path": "@codedependant/semantic-release-docker",
-        "tags": ["{version}", "{major}", "{major}.{minor}"],
-        "image": "my-image",
-        "dockerfile": "Dockerfile",
-        "registry": "quay.io",
-        "project": "codedependant"
+        "docker": {
+          "path": "@codedependant/semantic-release-docker",
+          "tags": ["{version}", "{major}", "{major}.{minor}"],
+          "image": "my-image",
+          "dockerfile": "Dockerfile",
+          "registry": "quay.io",
+          "project": "codedependant"
+        }
       }]
     ]
   }
@@ -73,6 +75,23 @@ full configuration:
 ```
 
 results in `quay.io/codedependant/my-image` with tags `1.0.0`, `1` and the `1.0` determined by `semantic-release`.
+
+Alternatively, using global options w/ root configuration
+```json
+{
+  "release": {
+    "extendds": "@internal/release-config-example",
+    "docker": {
+      "path": "@codedependant/semantic-release-docker",
+      "tags": ["{version}", "{major}", "{major}.{minor}"],
+      "image": "my-image",
+      "dockerfile": "Dockerfile",
+      "registry": "quay.io",
+      "project": "codedependant"
+    }
+  }
+}
+```
 
 minimum configuration:
 
