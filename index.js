@@ -5,6 +5,7 @@ const dockerPrepare = require('./lib/prepare.js')
 const dockerVerify = require('./lib/verify.js')
 const dockerPublish = require('./lib/publish.js')
 const buildConfig = require('./lib/build-config.js')
+const build_id = crypto.randomBytes(10).toString('hex')
 
 module.exports = {
   prepare
@@ -13,7 +14,6 @@ module.exports = {
 , buildConfig
 }
 
-const build_id = crypto.randomBytes(10).toString('hex')
 
 async function prepare(config, context) {
   return dockerPrepare(await buildConfig(build_id, config, context), context)
