@@ -88,6 +88,7 @@
   },
   "dependencies": {
     "@semantic-release/error": "^2.2.0",
+    "debug": "^4.1.1",
     "execa": "^4.0.2",
     "semantic-release": "^17.1.1",
     "semver": "^7.3.2"

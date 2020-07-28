@@ -1,5 +1,6 @@
 dependencies:
   '@semantic-release/error': 2.2.0
+  debug: 4.1.1
   execa: 4.0.3
   semantic-release: 17.1.1_semantic-release@17.1.1
   semver: 7.3.2
@@ -4421,6 +4422,7 @@ specifiers:
   '@semantic-release/error': ^2.2.0
   '@semantic-release/git': ^9.0.0
   '@semantic-release/github': ^7.0.7
+  debug: ^4.1.1
   eslint: ^7.4.0
   execa: ^4.0.2
   semantic-release: ^17.1.1
