@@ -61,8 +61,7 @@ full configuration:
     "plugins": [
       ["@codedependant/semantic-release-docker", {
         "docker": {
-          "path": "@codedependant/semantic-release-docker",
-          "tags": ["{version}", "{major}", "{major}.{minor}"],
+          "tags": ["latest", "{version}", "{major}-latest", "{major}.{minor}"],
           "image": "my-image",
           "dockerfile": "Dockerfile",
           "registry": "quay.io",
@@ -74,16 +73,15 @@ full configuration:
 }
 ```
 
-results in `quay.io/codedependant/my-image` with tags `1.0.0`, `1` and the `1.0` determined by `semantic-release`.
+results in `quay.io/codedependant/my-image` with tags `latest`, `1.0.0`, `1-latest` and the `1.0` determined by `semantic-release`.
 
 Alternatively, using global options w/ root configuration
 ```json
 {
   "release": {
-    "extendds": "@internal/release-config-example",
+    "extends": "@internal/release-config-example",
     "docker": {
-      "path": "@codedependant/semantic-release-docker",
-      "tags": ["{version}", "{major}", "{major}.{minor}"],
+      "tags": ["latest", "{version}", "{major}-latest", "{major}.{minor}"],
       "image": "my-image",
       "dockerfile": "Dockerfile",
       "registry": "quay.io",
@@ -108,7 +106,7 @@ minimum configuration:
 * A package name `@codedependant/test-project` results in `codedependant/test-project`
 * A package name `test-project` results in `test-project`
 
-the default tags @1.0.0 would be `1.0.0`, `1-latest`, `latest`
+the default docker image tags for the 1.0.0 release would be `1.0.0`, `1-latest`, `latest`
 
 ## Development
 
