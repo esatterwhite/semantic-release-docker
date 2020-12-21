@@ -98,6 +98,27 @@ test('steps::verify', async (t) => {
     tt.resolves(verify(config, context))
   })
 
+  t.test('docker no login', async (tt) => {
+    const context = {
+      env: {
+        ...process.env
+      , DOCKER_REGISTRY_USER: 'iamweasel'
+      }
+    , cwd: process.cwd()
+    , logger: {
+        success: sinon.stub()
+      , info: sinon.stub()
+      }
+    }
+    const config = await buildConfig(build_id, {
+      docker: {
+        registry: DOCKER_REGISTRY_HOST
+      , login: false
+      }
+    }, context)
+    tt.resolves(verify(config, context))
+  })
+
   t.test('docker password, no username', async (tt) => {
     const context = {
       env: {
