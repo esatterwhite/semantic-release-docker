@@ -50,6 +50,7 @@ omitted, it is assumed the docker daemon is already authenticated with the targe
 | docker.project        | _Optional_. The project or repository name to publish the image to                                                                          | For scoped packages, the scope will be used, otherwise `null`
 | docker.dockerfile     | _Optional_. The path, relative to `$PWD` to a Docker file to build the target image with                                                    | `Dockerfile`
 | docker.context        | _Optional_. A path, relative to `$PWD` to use as the build context A                                                                        | `.`
+| docker.login          | _Optional_. Set to false it by pass docker login if the docker daemon is already authorized                                                 | `true`
 
 ## Usage
 
