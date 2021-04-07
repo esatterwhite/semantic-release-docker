@@ -21,6 +21,11 @@ test('string', async (t) => {
       , values: {place: {name: 'boston'}}
       , expected: 'hello boston'
       , message: 'nested values'
+      }, {
+        input: null
+      , values: {place: {name: 'boston'}}
+      , expected: null
+      , message: 'non string value returns value'
       }
     ]
 
