@@ -34,4 +34,12 @@ test('object', async (t) => {
     tt.strictEqual(object.get(obj, 'foo.bar.baz.test'), null, 'foo.bar.baz.test')
     tt.strictEqual(object.get(null, 'foo.bar.baz'), null, 'null input')
   })
+
+  t.test('has', async (t) => {
+    t.ok(object.has(obj, 'bar'), 'key found')
+    t.ok(object.has(obj, 'biff'), 'has key w/ null value')
+    t.false(object.has(obj, 'whizbang'), 'key not found')
+    t.false(object.has(undefined, 'whizbang'), 'undefined object')
+
+  })
 }).catch(threw)
