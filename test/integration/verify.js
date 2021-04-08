@@ -179,7 +179,10 @@ test('steps::verify', async (t) => {
     tt.rejects(verify(config, context), {
       code: 'EINVAL'
     , name: 'SemanticReleaseError'
-    , details: /image name parsed from package.json name if possible. or via the "image" option/gi
+    , details: new RegExp(
+        'image name parsed from package.json name if possible. or via the "image" option'
+      , 'gi'
+      )
     })
   })
 

@@ -46,7 +46,10 @@ test('steps::prepare', async (t) => {
       image.clean()
     })
 
-    const {stdout} = await execa('docker', ['images', image.name, '-q', '--format={{ .Tag }}'])
+    const {stdout} = await execa('docker', [
+      'images', image.name
+    , '-q', '--format={{ .Tag }}'
+    ])
     tt.equal(stdout, build_id, 'build image fully built')
   })
 }).catch(threw)

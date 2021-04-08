@@ -218,7 +218,10 @@ test('Image', async (t) => {
     , context: path.join(__dirname, 'fixture')
     })
     await img.tag('1.0.0', false)
-    const {stdout} = await execa('docker', ['images', img.repo, '-q', '--format={{ .Tag }}'])
+    const {stdout} = await execa('docker', [
+      'images', img.repo
+    , '-q', '--format={{ .Tag }}'
+    ])
     const tags = stdout.split(os.EOL)
     tt.deepEqual(tags.sort(), [build_id, '1.0.0'].sort(), 'image tags')
   })
@@ -233,7 +236,10 @@ test('Image', async (t) => {
     , dockerfile: path.join('fixture', 'Dockerfile.test')
     })
     await img.clean()
-    const {stdout} = await execa('docker', ['images', img.repo, '-q', '--format={{ .Tag }}'])
+    const {stdout} = await execa('docker', [
+      'images', img.repo
+    , '-q', '--format={{ .Tag }}'
+    ])
     tt.deepEqual(stdout, '', 'all tags removed')
   })
 
