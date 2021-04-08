@@ -1,3 +1,30 @@
+## Changelog
+
+# [3.0.0](https://github.com/esatterwhite/semantic-release-docker/compare/v2.2.0...v3.0.0) (2021-04-08)
+
+
+### Chores
+
+* **deps**: eslint-config-codedependant [dbe464e](https://github.com/esatterwhite/semantic-release-docker/commit/dbe464ebf7ca571ffe0430f67085d30a291f828d) - Eric Satterwhite
+* **deps**: release-config-npm@1.0.1 [98b1a88](https://github.com/esatterwhite/semantic-release-docker/commit/98b1a880ef213abb49af9f9bd5fcff6d13729c21) - Eric Satterwhite
+
+
+### Features
+
+* **config**: allow templated build arguments [7167dcf](https://github.com/esatterwhite/semantic-release-docker/commit/7167dcf9aba8f554e2ccb9d42209fce3ec86d3e3) - Eric Satterwhite
+* **config**: unnest config values from docker property [2087683](https://github.com/esatterwhite/semantic-release-docker/commit/2087683edfaf66825544ba2eb95eb8c6be533658) - Eric Satterwhite
+
+
+### **BREAKING CHANGES**
+
+* **config:** Flatten the docker config option for semantic relase into the root
+config. Semantic release doesn't do a very good job of merging options
+that are coming from a sharable configuration. This makes it easier to
+utilize overrides when using a sharable config. Options are camel cased
+using the docker root word prefix
+`docker.args` -> `dockerArgs`
+`docker.login` -> `dockerLogin`
+
 # Semantic Release Docker
 
 # [2.2.0](https://github.com/esatterwhite/semantic-release-docker/compare/v2.1.0...v2.2.0) (2020-12-21)
