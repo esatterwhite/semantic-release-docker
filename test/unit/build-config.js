@@ -26,6 +26,7 @@ test('build-config', async (t) => {
     })
     tt.match(config, {
       dockerfile: 'Dockerfile'
+    , publish: true
     , nocache: false
     , tags: ['latest', '{major}-latest', '{version}']
     , args: {
@@ -56,6 +57,7 @@ test('build-config', async (t) => {
     tt.match(config, {
       dockerfile: 'Dockerfile'
     , nocache: false
+    , publish: true
     , tags: ['latest', '{major}-latest', '{version}']
     , args: {
         SRC_DIRECTORY: 'one'
@@ -103,16 +105,16 @@ test('build-config', async (t) => {
 
     {
       const config = await buildConfig('id', {
-        docker: {
-          project: 'kittens'
-        , image: 'override'
-        , dockerfile: 'Dockerfile.test'
-        }
+        dockerProject: 'kittens'
+      , dockerImage: 'override'
+      , dockerFile: 'Dockerfile.test'
+      , dockerPublish: false
       }, {
         cwd: path.join(t.testdirName, 'scoped')
       })
       tt.match(config, {
         dockerfile: 'Dockerfile.test'
+      , publish: false
       , nocache: false
       , tags: ['latest', '{major}-latest', '{version}']
       , args: {
@@ -134,11 +136,9 @@ test('build-config', async (t) => {
 
     {
       const config = await buildConfig('id', {
-        docker: {
-          project: null
-        , image: 'override'
-        , dockerfile: 'Dockerfile.test'
-        }
+        dockerProject: null
+      , dockerImage: 'override'
+      , dockerFile: 'Dockerfile.test'
       }, {
         cwd: path.join(t.testdirName, 'scoped')
       })

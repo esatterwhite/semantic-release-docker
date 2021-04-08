@@ -14,7 +14,6 @@ module.exports = {
 , buildConfig
 }
 
-
 async function prepare(config, context) {
   return dockerPrepare(await buildConfig(build_id, config, context), context)
 }

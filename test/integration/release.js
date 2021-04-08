@@ -3,6 +3,7 @@
 const execa = require('execa')
 const {test, threw} = require('tap')
 const git = require('../common/git/index.js')
+const DOCKER_REGISTRY_HOST = process.env.TEST_DOCKER_REGISTRY || 'localhost:5000'
 
 const stringify = JSON.stringify
 
@@ -18,14 +19,13 @@ test('docker release', async (t) => {
         ci: true
       , npmPublish: false
       , branches: ['main']
-      , docker: {
-          registry: 'localhost:5000'
-        , project: 'docker-release'
-        , image: 'fake'
-        , args: {
-            SAMPLE_THING: '{type}.{version}'
-          , GIT_REF: '{git_sha}-{git_tag}'
-          }
+      , dockerRegistry: DOCKER_REGISTRY_HOST
+      , dockerProject: 'docker-release'
+      , dockerImage: 'fake'
+      , dockerArgs: {
+          SAMPLE_THING: '{type}.{version}'
+        , GIT_REF: '{git_sha}-{git_tag}'
+        , BUILD_DATE: '{now}'
         }
       , plugins: [
           '@semantic-release/commit-analyzer'
@@ -47,6 +47,7 @@ test('docker release', async (t) => {
   })
 
   await git.init(cwd)
+  t.comment('git repo initialized')
   await git.add(cwd)
   await git.commit(cwd, 'feat: initial release')
 
@@ -59,17 +60,13 @@ test('docker release', async (t) => {
       'install'
     ], {
       cwd: cwd
-    , extendEnv: false
     , env: {
         BRANCH_NAME: 'main'
       , CI_BRANCH: 'main'
       , CI: 'true'
       , GITHUB_REF: 'refs/heads/main'
-      , PWD: cwd
-      , DEBUG: process.env.DEBUG
-      , PATH: process.env.PATH
-      , HOME: process.env.HOME
-      , USER: process.env.USER
+      , DOCKER_REGISTRY_USER: 'iamweasel'
+      , DOCKER_REGISTRY_PASSWORD: 'secretsquirrel'
       }
     })
 
@@ -82,19 +79,14 @@ test('docker release', async (t) => {
   , 'test-release'
   , `--repositoryUrl=${origin}`], {
     cwd: cwd
-  , extendEnv: false
   , env: {
       BRANCH_NAME: 'main'
     , CI_BRANCH: 'main'
     , CI: 'true'
     , GITHUB_REF: 'refs/heads/main'
-    , PWD: cwd
-    , DEBUG: process.env.DEBUG
-    , PATH: process.env.PATH
-    , HOME: process.env.HOME
-    , USER: process.env.USER
     }
   })
+  stream.stdout.pipe(process.stdout)
   await stream
 
 }).catch(threw)

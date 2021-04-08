@@ -27,17 +27,16 @@ test('steps::publish', async (t) => {
     , logger: {
         success: sinon.stub()
       , info: sinon.stub()
+      , debug: sinon.stub()
       }
     }
 
     const config = await buildConfig(build_id, {
-      docker: {
-        registry: DOCKER_REGISTRY_HOST
-      , project: 'docker-publish'
-      , image: 'real'
-      , tags: ['{previous.major}-previous', '{major}-foobar', '{version}']
-      , dockerfile: 'docker/Dockerfile.publish'
-      }
+      dockerRegistry: DOCKER_REGISTRY_HOST
+    , dockerProject: 'docker-publish'
+    , dockerImage: 'real'
+    , dockerTags: ['{previous.major}-previous', '{major}-foobar', '{version}']
+    , dockerFile: 'docker/Dockerfile.publish'
     }, context)
 
     const auth = await verify(config, context)

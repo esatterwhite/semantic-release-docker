@@ -21,16 +21,14 @@ test('buildTemplateVars', async (t) => {
     }
   }
   const opts = await buildConfig('abacadaba', {
-    docker: {
-      args: {
-        TEMPLATE_VALUE: '{type}.{version}'
-      , BOOLEAN_VALUE: true
-      , NULL_VALUE: null
-      }
+    dockerArgs: {
+      TEMPLATE_VALUE: '{type}.{version}'
+    , BOOLEAN_VALUE: true
+    , NULL_VALUE: null
     }
   }, context)
 
-  const vars = buildTemplateVars(context, opts)
+  const vars = buildTemplateVars(opts, context)
   t.match(vars, {
     release_type: 'major'
   , release_notes: 'test it'
