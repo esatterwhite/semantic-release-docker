@@ -2,7 +2,7 @@
 
 /* istanbul ignore file */
 module.exports = {
-  branches: ['master']
+  branches: ['main']
 , extends: '@codedependant/release-config-npm'
 , changelogFile: 'CHANGELOG.md'
 , changelogTitle: '# Semantic Release Docker'

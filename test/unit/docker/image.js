@@ -63,6 +63,49 @@ test('Image', async (t) => {
     tt.equal(img.context, '.', 'default image context')
     img.context = __dirname
     tt.equal(img.context, __dirname, 'context override')
+    tt.equal(
+      img.dockerfile
+    , path.join(__dirname, 'build', 'Dockerfile.test')
+    , 'docker file path'
+    )
+  })
+
+  t.test('dockerfile location resolution', async (t) => {
+    t.test('relative location', async (t) => {
+      const img = new docker.Image({
+        name: 'test'
+      , build_id: 'abc123'
+      , registry: 'quay.io'
+      , project: 'esatterwhite'
+      , name: 'test'
+      , dockerfile: '../../Dockerfile.test'
+      , cwd: path.join(__dirname, 'build')
+      , sha: 'hello'
+      })
+      t.equal(
+        img.dockerfile
+      , path.join(__dirname, '..', 'Dockerfile.test')
+      , 'docker file path'
+      )
+    })
+
+    t.test('absolute path', async (t) => {
+      const img = new docker.Image({
+        name: 'test'
+      , build_id: 'abc123'
+      , registry: 'quay.io'
+      , project: 'esatterwhite'
+      , name: 'test'
+      , dockerfile: '/var/opt/Dockerfile.test'
+      , cwd: path.join(__dirname, 'build')
+      , sha: 'hello'
+      })
+      t.equal(
+        img.dockerfile
+      , '/var/opt/Dockerfile.test'
+      , 'docker file path'
+      )
+    })
   })
 
   t.test('image#id()', async (tt) => {

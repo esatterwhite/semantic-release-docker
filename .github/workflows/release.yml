@@ -3,11 +3,11 @@ name: Test + Release
 on:
   pull_request:
     branches:
-      - master
+      - main
 
   push:
     branch:
-      - master
+      - main
 jobs:
   test:
     name: Test Suite
