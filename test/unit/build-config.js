@@ -139,13 +139,14 @@ test('build-config', async (t) => {
         dockerProject: null
       , dockerImage: 'override'
       , dockerFile: 'Dockerfile.test'
+      , dockerTags: 'latest,{major}-latest , fake, {version}'
       }, {
         cwd: path.join(t.testdirName, 'scoped')
       })
       tt.match(config, {
         dockerfile: 'Dockerfile.test'
       , nocache: false
-      , tags: ['latest', '{major}-latest', '{version}']
+      , tags: ['latest', '{major}-latest', 'fake', '{version}']
       , args: {
           SRC_DIRECTORY: 'scoped'
         , TARGET_PATH: '.'
