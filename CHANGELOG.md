@@ -1,3 +1,12 @@
+# Semantic Release Docker
+
+# [3.1.0](https://github.com/esatterwhite/semantic-release-docker/compare/v3.0.1...v3.1.0) (2021-04-12)
+
+
+### Features
+
+* **lib**: parse tags array from string [27d078b](https://github.com/esatterwhite/semantic-release-docker/commit/27d078b2bbd1f8881f2a4c390b50ac6d384e40f4) - Eric Satterwhite
+
 ## Changelog
 
 ## [3.0.1](https://github.com/esatterwhite/semantic-release-docker/compare/v3.0.0...v3.0.1) (2021-04-09)
