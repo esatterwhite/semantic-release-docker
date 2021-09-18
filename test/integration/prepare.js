@@ -49,6 +49,7 @@ test('steps::prepare', async (t) => {
       , BUILD_DATE: '{now}'
       }
     , dockerFile: 'docker/Dockerfile.prepare'
+    , dockerContext: 'docker'
     }, context)
 
     const auth = await verify(config, context)
@@ -64,6 +65,7 @@ test('steps::prepare', async (t) => {
     tt.equal(image.opts.args.get('MAJOR_TEMPLATE'), '2', 'MAJOR_TEMPLATE value')
     tt.equal(image.opts.args.get('GIT_REF'), 'abacadaba', 'GIT_REF value')
     tt.match(image.opts.args.get('BUILD_DATE'), DATE_REGEX, 'BUILD_DATE value')
+    tt.equal(image.context, path.join(context.cwd, config.context), 'docker context path')
 
     const {stdout} = await execa('docker', [
       'images', image.name

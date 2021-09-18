@@ -172,7 +172,8 @@ test('steps::verify', async (t) => {
       code: 'EINVAL'
     , name: 'SemanticReleaseError'
     , details: new RegExp(
-        'image name parsed from package.json name if possible. or via the "image" option'
+        'image name parsed from package.json name if possible. '
+          + 'or via the "dockerImage" option'
       , 'gi'
       )
     })
