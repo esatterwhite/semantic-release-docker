@@ -1,5 +1,12 @@
 # Semantic Release Docker
 
+## [3.1.2](https://github.com/esatterwhite/semantic-release-docker/compare/v3.1.1...v3.1.2) (2021-09-18)
+
+
+### Bug Fixes
+
+* **config**: ensure the docker context is passed image builds [366b8d1](https://github.com/esatterwhite/semantic-release-docker/commit/366b8d1d1f90855a76cfdb78009ec4510ead769e) - Eric Satterwhite, closes: [#13](https://github.com/esatterwhite/semantic-release-docker/issues/13)
+
 ## [3.1.1](https://github.com/esatterwhite/semantic-release-docker/compare/v3.1.0...v3.1.1) (2021-09-18)
 
 
