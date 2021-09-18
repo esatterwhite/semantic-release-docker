@@ -60,7 +60,7 @@ test('Image', async (t) => {
     , args: Map
     }, 'default image options')
 
-    tt.equal(img.context, '.', 'default image context')
+    tt.equal(img.context, path.join(__dirname, 'build', '.'), 'default image context')
     img.context = __dirname
     tt.equal(img.context, __dirname, 'context override')
     tt.equal(
@@ -176,7 +176,7 @@ test('Image', async (t) => {
       , 'quay.io/esatterwhite/test:abacadaba'
       , '-f'
       , path.join(process.cwd(), 'Dockerfile')
-      , '.'
+      , process.cwd()
       ], 'build command')
     }
 
@@ -284,6 +284,20 @@ test('Image', async (t) => {
     , '-q', '--format={{ .Tag }}'
     ])
     tt.deepEqual(stdout, '', 'all tags removed')
+  })
+
+  t.test('image.context', async (tt) => {
+    const img = new docker.Image({
+      name: 'test'
+    , registry: 'quay.io'
+    , project: 'esatterwhite'
+    , build_id: build_id
+    , cwd: __dirname
+    , dockerfile: path.join('fixture', 'Dockerfile.test')
+    , context: 'fixture'
+    })
+
+    tt.equal(img.context, path.join(__dirname, 'fixture'), 'expected image context')
   })
 
 }).catch(threw)
