@@ -1,5 +1,12 @@
 # Semantic Release Docker
 
+## [3.1.1](https://github.com/esatterwhite/semantic-release-docker/compare/v3.1.0...v3.1.1) (2021-09-18)
+
+
+### Documentation
+
+* corrected the parameter - dockerFile [81e9319](https://github.com/esatterwhite/semantic-release-docker/commit/81e9319e7dae9905cf098a5b2c3a9837d4f5d1d9) - Eric Satterwhite
+
 # [3.1.0](https://github.com/esatterwhite/semantic-release-docker/compare/v3.0.1...v3.1.0) (2021-04-12)
 
 
