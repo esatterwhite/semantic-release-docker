@@ -114,7 +114,8 @@ module.exports = {
         API_TOKEN: true
       , RELEASE_DATE: new Date().toISOString()
       , RELEASE_VERSION: '{next.version}'
-      }
+      },
+      dockerTarget: 'my-target-stage'
     }]
   ]
 }
