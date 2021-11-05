@@ -53,6 +53,7 @@ omitted, it is assumed the docker daemon is already authenticated with the targe
 | `dockerLogin`         | _Optional_. Set to false it by pass docker login if the docker daemon is already authorized                                                 | `true`                                                        |
 | `dockerArgs`          | _Optional_. Include additional values for docker's `build-arg`. Supports templating                                                         |                                                               |
 | `dockerPublish`       | _Optional_. Automatically push image tags during the publish phase.                                                                         | `true`                                                        |
+| `dockerTarget`        | _Optional_. Set the target build stage to build.                                                                                            | `null`                                                        |
 
 ### Build Arguments
 
