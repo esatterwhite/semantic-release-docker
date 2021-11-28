@@ -59,13 +59,13 @@ omitted, it is assumed the docker daemon is already authenticated with the targe
 By default several build arguments will be included when the docker images is being built.
 Build arguments can be templated in the same fashion as docker tags. If the value for a
 build argument is explictly `true`, the value will be omitted and the value from
-a matching environment variable will be utilized instead. This can be usefule when trying to include
+a matching environment variable will be utilized instead. This can be useful when trying to include
 secrets and other sensitive information
 
 | Argument Name       | Description                                                                                | Default                      |
 |---------------------|--------------------------------------------------------------------------------------------|------------------------------|
 | `SRC_DIRECTORY`     | The of the directory the build was triggered from                                          | The directory name of CWD    |
-| `TARGET_PATH`       | Path relative to the execution root. Usefule for Sharing a Single Docker file in monorepos |                              |
+| `TARGET_PATH`       | Path relative to the execution root. Useful for Sharing a Single Docker file in monorepos |                              |
 | `NPM_PACKAGE_NAME`  | The `name` property extracted from `package.json` - if present                             |                              |
 | `NPM_PACKAGE_SCOPE` | The parsed scope from the `name` property from `package.json` - sans `@`                   |                              |
 | `CONFIG_NAME`       | The configured name of the docker image.                                                   | The parsed package name      |
