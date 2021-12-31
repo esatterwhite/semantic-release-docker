@@ -5,7 +5,7 @@ dependencies:
   semantic-release: 17.1.1
   semver: 7.3.2
 devDependencies:
-  '@codedependant/release-config-npm': 1.0.3_semantic-release@17.1.1
+  '@codedependant/release-config-npm': 1.0.4_semantic-release@17.1.1
   '@semantic-release/changelog': 5.0.1_semantic-release@17.1.1
   '@semantic-release/git': 9.0.0_semantic-release@17.1.1
   '@semantic-release/github': 7.0.7_semantic-release@17.1.1
@@ -257,7 +257,7 @@ packages:
     dev: true
     resolution:
       integrity: sha512-ixV66KWfCI6GKoA/2H9v6bQdbfXEwwpOdQ8cRvb4F+eyvhlaHxWFMQB4+3d9QFJXZsiiiqVrewNV0DFEQpyT4Q==
-  /@codedependant/release-config-core/1.0.2_semantic-release@17.1.1:
+  /@codedependant/release-config-core/1.1.0_semantic-release@17.1.1:
     dependencies:
       '@semantic-release/changelog': 5.0.1_semantic-release@17.1.1
       '@semantic-release/git': 9.0.0_semantic-release@17.1.1
@@ -265,15 +265,15 @@ packages:
     peerDependencies:
       semantic-release: '*'
     resolution:
-      integrity: sha512-q7MKrorZZMNTts0l/2REMeXRjNeJ6al1YZH3DrFnW9AW3Bgswg6iMONkAOD3POuhl8RuZCzcTcgJ7OtYjdxrTg==
-  /@codedependant/release-config-npm/1.0.3_semantic-release@17.1.1:
+      integrity: sha512-zhZBY0A/4IWoMx+EjKF9Ayn2/pWZgijbPUqDWXDIgdOAaZ4w5K9eYGk7qlY/zVFNnVwi2S8scAshty/JrQJtIw==
+  /@codedependant/release-config-npm/1.0.4_semantic-release@17.1.1:
     dependencies:
-      '@codedependant/release-config-core': 1.0.2_semantic-release@17.1.1
+      '@codedependant/release-config-core': 1.1.0_semantic-release@17.1.1
     dev: true
     peerDependencies:
       semantic-release: '*'
     resolution:
-      integrity: sha512-IuWNKticm7sSwhJKDzi1KjBCteAU1qEsLJyChJI+dn+YKkNr8NQf9Z9ot+BtEdL/eFs+1i6pReaXTYSzZo5oyg==
+      integrity: sha512-ygM55gPFu6UIkm13pQ0+B6UXYvhSfkfbRGcsK+6NhViVXeT2WhWIv+6z+pmh9k9j0K8Iy+kcSnPjMBztEKsoaQ==
   /@eslint/eslintrc/1.0.5:
     dependencies:
       ajv: 6.12.6
@@ -4441,7 +4441,7 @@ packages:
     resolution:
       integrity: sha512-Ux4ygGWsu2c7isFWe8Yu1YluJmqVhxqK2cLXNQA5AcC3QfbGNpM7fu0Y8b/z16pXLnFxZYvWhd3fhBY9DLmC6Q==
 specifiers:
-  '@codedependant/release-config-npm': ^1.0.1
+  '@codedependant/release-config-npm': ^1.0.4
   '@semantic-release/changelog': ^5.0.1
   '@semantic-release/error': ^2.2.0
   '@semantic-release/git': ^9.0.0
