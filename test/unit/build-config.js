@@ -28,7 +28,7 @@ test('build-config', async (t) => {
       dockerfile: 'Dockerfile'
     , publish: true
     , nocache: false
-    , tags: ['latest', '{major}-latest', '{version}']
+    , tags: ['latest', '{{major}}-latest', '{{version}}']
     , args: {
         SRC_DIRECTORY: 'standard'
       , TARGET_PATH: '.'
@@ -58,7 +58,7 @@ test('build-config', async (t) => {
       dockerfile: 'Dockerfile'
     , nocache: false
     , publish: true
-    , tags: ['latest', '{major}-latest', '{version}']
+    , tags: ['latest', '{{major}}-latest', '{{version}}']
     , args: {
         SRC_DIRECTORY: 'one'
       , TARGET_PATH: 'workspace/one'
@@ -85,7 +85,7 @@ test('build-config', async (t) => {
       tt.match(config, {
         dockerfile: 'Dockerfile'
       , nocache: false
-      , tags: ['latest', '{major}-latest', '{version}']
+      , tags: ['latest', '{{major}}-latest', '{version}']
       , args: {
           SRC_DIRECTORY: 'scoped'
         , TARGET_PATH: '.'
@@ -116,7 +116,7 @@ test('build-config', async (t) => {
         dockerfile: 'Dockerfile.test'
       , publish: false
       , nocache: false
-      , tags: ['latest', '{major}-latest', '{version}']
+      , tags: ['latest', '{{major}}-latest', '{{version}}']
       , args: {
           SRC_DIRECTORY: 'scoped'
         , TARGET_PATH: '.'
@@ -139,14 +139,14 @@ test('build-config', async (t) => {
         dockerProject: null
       , dockerImage: 'override'
       , dockerFile: 'Dockerfile.test'
-      , dockerTags: 'latest,{major}-latest , fake, {version}'
+      , dockerTags: 'latest,{{major}}-latest , fake, {{version}}'
       }, {
         cwd: path.join(t.testdirName, 'scoped')
       })
       tt.match(config, {
         dockerfile: 'Dockerfile.test'
       , nocache: false
-      , tags: ['latest', '{major}-latest', 'fake', '{version}']
+      , tags: ['latest', '{{major}}-latest', 'fake', '{{version}}']
       , args: {
           SRC_DIRECTORY: 'scoped'
         , TARGET_PATH: '.'

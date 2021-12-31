@@ -35,7 +35,7 @@ test('steps::publish', async (t) => {
       dockerRegistry: DOCKER_REGISTRY_HOST
     , dockerProject: 'docker-publish'
     , dockerImage: 'real'
-    , dockerTags: ['{previous.major}-previous', '{major}-foobar', '{version}']
+    , dockerTags: ['{{previous.major}}-previous', '{{major}}-foobar', '{{version}}']
     , dockerFile: 'docker/Dockerfile.publish'
     }, context)
 

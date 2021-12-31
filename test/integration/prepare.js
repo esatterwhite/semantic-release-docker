@@ -43,10 +43,10 @@ test('steps::prepare', async (t) => {
     , dockerImage: 'fake'
     , dockerArgs: {
         MY_VARIABLE: '1'
-      , TAG_TEMPLATE: '{git_tag}'
-      , MAJOR_TEMPLATE: '{major}'
-      , GIT_REF: '{git_sha}'
-      , BUILD_DATE: '{now}'
+      , TAG_TEMPLATE: '{{git_tag}}'
+      , MAJOR_TEMPLATE: '{{major}}'
+      , GIT_REF: '{{git_sha}}'
+      , BUILD_DATE: '{{now}}'
       }
     , dockerFile: 'docker/Dockerfile.prepare'
     , dockerContext: 'docker'
