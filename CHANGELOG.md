@@ -1,5 +1,30 @@
 # Semantic Release Docker
 
+# [4.0.0](https://github.com/esatterwhite/semantic-release-docker/compare/v3.1.2...v4.0.0) (2021-12-31)
+
+
+### Chores
+
+* **deps**: @codedependant/release-config-npm@1.0.4 [fdb0985](https://github.com/esatterwhite/semantic-release-docker/commit/fdb0985d346b1f74d61cf4d0ef238743e5f1d6f4) - Eric Satterwhite
+* **deps**: eslint-config-codedependant@3.0.0 [6807acc](https://github.com/esatterwhite/semantic-release-docker/commit/6807accd81002e7bc86d79f260c19141f40363f6) - Eric Satterwhite
+* **deps**: eslint@8.5.0 [f7e0bbe](https://github.com/esatterwhite/semantic-release-docker/commit/f7e0bbeb67156dedb0b3a8a2d0bad0d8828c7dde) - Eric Satterwhite
+
+
+### Features
+
+* **template**: replace simple template engine with handlebars [b20c89c](https://github.com/esatterwhite/semantic-release-docker/commit/b20c89ca979de7969028541b6a29ac9b867a06c3) - Eric Satterwhite, closes: [#16](https://github.com/esatterwhite/semantic-release-docker/issues/16)
+
+
+### Miscellaneous
+
+* fix typo [3aa33ba](https://github.com/esatterwhite/semantic-release-docker/commit/3aa33ba2fc003a9f88e6b1d4263999152a577eda) - Eric Satterwhite
+
+
+### **BREAKING CHANGES**
+
+* **template:** Use handlebars as template engine. Place holders are
+now double curlies `{{ }}`
+
 ## [3.1.2](https://github.com/esatterwhite/semantic-release-docker/compare/v3.1.1...v3.1.2) (2021-09-18)
 
 
