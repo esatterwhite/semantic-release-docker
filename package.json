@@ -11,6 +11,7 @@
     "tap": "tap",
     "lint": "eslint .",
     "lint:fix": "npm run lint -- --fix",
+    "local": "env $(cat env/local.env)",
     "pretap": "npm run lint",
     "release": "semantic-release"
   },
@@ -25,31 +26,6 @@
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/esatterwhite/semantic-release-docker.git"
-  },
-  "eslintConfig": {
-    "root": true,
-    "extends": "codedependant",
-    "ignorePatterns": [
-      "node_modules/",
-      "test/fixture/",
-      "coverage/",
-      ".nyc_output/",
-      "env/",
-      "doc/"
-    ],
-    "rules": {
-      "object-shorthand": 0,
-      "no-unused-vars": [
-        "error",
-        {
-          "varsIgnorePattern": "_"
-        }
-      ],
-      "quote-props": [
-        2,
-        "as-needed"
-      ]
-    }
   },
   "tap": {
     "esm": false,
@@ -75,6 +51,8 @@
     "nyc-arg": [
       "--exclude=coverage/",
       "--exclude=test/",
+      "--exclude=.eslintrc.js",
+      "--exclude=release.config.js",
       "--all"
     ]
   },
@@ -84,7 +62,8 @@
     "@semantic-release/git": "^9.0.0",
     "@semantic-release/github": "^7.0.7",
     "eslint": "^8.5.0",
-    "eslint-config-codedependant": "^2.1.6",
+    "eslint-config-codedependant": "^3.0.0",
+    "semantic-release": "17",
     "sinon": "^9.0.2",
     "tap": "^14.10.7"
   },
@@ -92,7 +71,6 @@
     "@semantic-release/error": "^2.2.0",
     "debug": "^4.1.1",
     "execa": "^4.0.2",
-    "semantic-release": "^17.1.1",
     "semver": "^7.3.2"
   }
 }
