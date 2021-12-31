@@ -35,7 +35,7 @@ test('docker release', async (t) => {
         ]
       }
     , devDependencies: {
-        'semantic-release': '*'
+        'semantic-release': '17.x'
       , '@semantic-release/commit-analyzer': '*'
       , '@semantic-release/release-notes-generator': '*'
       , '@semantic-release/npm': '*'
@@ -65,8 +65,6 @@ test('docker release', async (t) => {
       , CI_BRANCH: 'main'
       , CI: 'true'
       , GITHUB_REF: 'refs/heads/main'
-      , DOCKER_REGISTRY_USER: 'iamweasel'
-      , DOCKER_REGISTRY_PASSWORD: 'secretsquirrel'
       }
     })
 
@@ -84,6 +82,8 @@ test('docker release', async (t) => {
     , CI_BRANCH: 'main'
     , CI: 'true'
     , GITHUB_REF: 'refs/heads/main'
+    , DOCKER_REGISTRY_USER: 'iamweasel'
+    , DOCKER_REGISTRY_PASSWORD: 'secretsquirrel'
     }
   })
   stream.stdout.pipe(process.stdout)
