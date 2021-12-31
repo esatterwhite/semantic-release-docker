@@ -7,17 +7,17 @@ test('string', async (t) => {
   t.test('template', async (tt) => {
     const cases = [
       {
-        input: 'hello {value}'
+        input: 'hello {{value}}'
       , values: {value: 'world'}
       , expected: 'hello world'
       , message: 'single value lookup'
       }, {
-        input: 'hello {value}'
+        input: 'hello {{value}}'
       , values: {}
-      , expected: 'hello {value}'
+      , expected: 'hello '
       , message: 'missing imput values'
       }, {
-        input: 'hello {place.name}'
+        input: 'hello {{place.name}}'
       , values: {place: {name: 'boston'}}
       , expected: 'hello boston'
       , message: 'nested values'

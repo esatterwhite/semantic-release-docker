@@ -23,9 +23,9 @@ test('docker release', async (t) => {
       , dockerProject: 'docker-release'
       , dockerImage: 'fake'
       , dockerArgs: {
-          SAMPLE_THING: '{type}.{version}'
-        , GIT_REF: '{git_sha}-{git_tag}'
-        , BUILD_DATE: '{now}'
+          SAMPLE_THING: '{{type}}.{{version}}'
+        , GIT_REF: '{{git_sha}}-{{git_tag}}'
+        , BUILD_DATE: '{{now}}'
         }
       , plugins: [
           '@semantic-release/commit-analyzer'
@@ -35,14 +35,14 @@ test('docker release', async (t) => {
         ]
       }
     , devDependencies: {
-        'semantic-release': '17.x'
+        'semantic-release': '*'
       , '@semantic-release/commit-analyzer': '*'
       , '@semantic-release/release-notes-generator': '*'
       , '@semantic-release/npm': '*'
       , '@codedependant/semantic-release-docker': 'file:../../../'
       }
     })
-  , Dockerfile: 'FROM debian:buster-slim\n\nRUN ls -alh'
+  , Dockerfile: 'FROM debian:buster-slim\n\nCMD ["whoami"]'
   , '.gitignore': 'node_modules/'
   })
 

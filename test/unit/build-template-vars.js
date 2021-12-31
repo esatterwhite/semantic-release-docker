@@ -22,7 +22,7 @@ test('buildTemplateVars', async (t) => {
   }
   const opts = await buildConfig('abacadaba', {
     dockerArgs: {
-      TEMPLATE_VALUE: '{type}.{version}'
+      TEMPLATE_VALUE: '{{type}}.{{version}}'
     , BOOLEAN_VALUE: true
     , NULL_VALUE: null
     }
@@ -55,7 +55,7 @@ test('buildTemplateVars', async (t) => {
     , CONFIG_PROJECT: null
     , GIT_SHA: 'abcdefgh'
     , GIT_TAG: 'v1.0.0'
-    , TEMPLATE_VALUE: '{type}.{version}'
+    , TEMPLATE_VALUE: '{{type}}.{{version}}'
     , BOOLEAN_VALUE: true
     , NULL_VALUE: null
     }

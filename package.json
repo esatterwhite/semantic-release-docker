@@ -4,8 +4,16 @@
   "version": "3.1.2",
   "description": "docker package",
   "main": "index.js",
+  "files": [
+    "lib/",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE",
+    "package.json",
+    "index.js"
+  ],
   "scripts": {
-    "test": "docker-compose -f compose/base.yml -f compose/test.yml up --exit-code-from semantic-release --force-recreate --remove-orphans",
+    "test": "docker-compose -f compose/base.yml -f compose/test.yml up --exit-code-from semantic-release --force-recreate --remove-orphans --build",
     "start": "docker-compose -f compose/base.yml -f compose/dev.yml up --force-recreate --remove-orphans --build",
     "stop": "docker-compose -f compose/base.yml -f compose/dev.yml down",
     "tap": "tap",
@@ -71,6 +79,7 @@
     "@semantic-release/error": "^2.2.0",
     "debug": "^4.1.1",
     "execa": "^4.0.2",
+    "handlebars": "^4.7.7",
     "semver": "^7.3.2"
   }
 }
