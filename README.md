@@ -101,7 +101,7 @@ The following handlebars template helpers are pre installed
 |:------------:|------------------------------------------------------------------------|:-----------:|--------------------------------------------------------------------------------------------|
 |  `endswith`  | returns true if a string ends with another                             | [Boolean][] | <pre lang="hbs">{{#if (endswith myvar 'ing')}}{{ othervar }}{{/if}}</pre>                  |
 |     `eq`     | returns true if two values are strictly equal to each other            | [Boolean][] | <pre lang="hbs">{{#if (eq var_one var_two)}}{{ var_three }}{{/if}}</pre>                   |
-|     `gt`     | returns true if the first value is greater than the second             |             | [Boolean][]                                                                                | <pre lang="hbs">{{#if (gt var_one var_two)}}{{ var_three }}{{/if}}</pre> |
+|     `gt`     | returns true if the first value is greater than the second             | [Boolean][] | <pre lang="hbs">{{#if (gt var_one var_two)}}{{ var_three }}{{/if}}</pre> |
 |     `gte`    | returns true if the first value is greater than or equal to the second | [Boolean][] | <pre lang="hbs">{{#if (gte var_one var_two)}}{{ var_three }}{{/if}}</pre>                  |
 |  `includes`  | returns true if the input (string \| array) includes the second value  | [Boolean][] | <pre lang="hbs">{{#if (includes some_array 'one')}}{{ var_one }}{{/if}}</pre>              |
 |    `lower`   | returns the lower cased varient of the input string                    |  [String][] | <pre lang="hbs">{{ lower my_var }}</pre>                                                   |
