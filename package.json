@@ -36,7 +36,6 @@
     "url": "git+ssh://git@github.com/esatterwhite/semantic-release-docker.git"
   },
   "tap": {
-    "esm": false,
     "ts": false,
     "jsx": false,
     "timeout": 60,
@@ -54,6 +53,7 @@
       "text",
       "text-summary",
       "json",
+      "json-summary",
       "html"
     ],
     "nyc-arg": [
