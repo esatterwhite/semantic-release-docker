@@ -34,6 +34,7 @@ test('steps::prepare', async (t) => {
         success: sinon.stub()
       , info: sinon.stub()
       , debug: sinon.stub()
+      , fatal: sinon.stub()
       }
     }
 
@@ -41,6 +42,7 @@ test('steps::prepare', async (t) => {
       dockerRegistry: DOCKER_REGISTRY_HOST
     , dockerProject: 'docker-prepare'
     , dockerImage: 'fake'
+    , dockerVerifyCmd: ['date', '+\'%x\'']
     , dockerArgs: {
         MY_VARIABLE: '1'
       , TAG_TEMPLATE: '{{git_tag}}'
@@ -52,8 +54,11 @@ test('steps::prepare', async (t) => {
     , dockerContext: 'docker'
     }, context)
 
-    const auth = await verify(config, context)
-    tt.ok(auth, `authentication to ${DOCKER_REGISTRY_HOST} suceeds`)
+    tt.match(
+      await verify(config, context)
+    , /\d{2}\/\d{2}\/\d{2}/
+    , 'verify command executed'
+    )
 
     const image = await prepare(config, context)
 
