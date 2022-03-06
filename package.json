@@ -73,7 +73,7 @@
     "eslint-config-codedependant": "^3.0.0",
     "semantic-release": "17",
     "sinon": "^9.0.2",
-    "tap": "^14.10.7"
+    "tap": "^16.0.0"
   },
   "dependencies": {
     "@semantic-release/error": "^3.0.0",
