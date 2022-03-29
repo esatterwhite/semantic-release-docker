@@ -77,21 +77,22 @@ secrets and other sensitive information
 
 String template will be passed these
 
-| Variable name  | Description                                                        | Type     |
-|----------------|--------------------------------------------------------------------|----------|
-| `git_sha`      | The commit SHA of the current release                              | `String` |
-| `git_tag`      | The git tag of the current release                                 | `String` |
-| `release_type` | The severity type of the current build (`major`, `minor`, `patch`) | `String` |
-| `relase_notes` | The release notes blob associated with the release                 | `String` |
-| `next`         | Semver object representing the next release                        | `Object` |
-| `previous`     | Semver object representing the previous release                    | `Object` |
-| `major`        | The major version of the next release                              | `Number` |
-| `minor`        | The minor version of the next release                              | `Number` |
-| `patch`        | The patch version of the next release                              | `Number` |
-| `env`          | Environment variables that were set at build time                  | `Object` |
-| `pkg`          | Values parsed from `package.json`                                  | `Object` |
-| `build`        | A Random build hash representing the current execution context     | `String` |
-| `now`          | Current timestamp is ISO 8601 format                               | `String` |
+| Variable name  | Description                                                        | Type            |
+|----------------|--------------------------------------------------------------------|-----------------|
+| `git_sha`      | The commit SHA of the current release                              | `String`        |
+| `git_tag`      | The git tag of the current release                                 | `String`        |
+| `release_type` | The severity type of the current build (`major`, `minor`, `patch`) | `String`        |
+| `relase_notes` | The release notes blob associated with the release                 | `String`        |
+| `next`         | Semver object representing the next release                        | `Object`        |
+| `previous`     | Semver object representing the previous release                    | `Object`        |
+| `major`        | The major version of the next release                              | `Number`        |
+| `minor`        | The minor version of the next release                              | `Number`        |
+| `patch`        | The patch version of the next release                              | `Number`        |
+| `prerelease`   | The prerelease versions of the next release                        | `Array<Number>` |
+| `env`          | Environment variables that were set at build time                  | `Object`        |
+| `pkg`          | Values parsed from `package.json`                                  | `Object`        |
+| `build`        | A Random build hash representing the current execution context     | `String`        |
+| `now`          | Current timestamp is ISO 8601 format                               | `String`        |
 
 ### Template Helpers
 
@@ -190,6 +191,24 @@ $ docker push quay.io/codedependant/my-image
 * A package name `test-project` results in a docker image name `test-project`
 
 the default docker image tags for the 1.0.0 release would be `1.0.0`, `1-latest`, `latest`
+
+**example prerelease configuration**:
+
+```json
+{
+  "release": {
+    "dockerTags": [
+      "{{#if prerelease.[0]}}{{prerelease.[0]}}{{else}}latest{{/if}}",
+      "{{major}}-{{#if prerelease.[0]}}{{prerelease.[0]}}{{else}}latest{{/if}}",
+      "{{major}}.{{minor}}-{{#if prerelease.[0]}}{{prerelease.[0]}}{{else}}latest{{/if}}",
+      "{{version}}"
+    ]
+  }
+}
+```
+
+the docker tags for version `1.2.3` will be `1.2.3`, `1.2-latest`, `1-latest` and `latest`  
+the docker tags for version `2.3.4-beta.6` will be `2.3.4-beta.6`, `2.3-beta`, `2-beta` and `beta`
 
 ## Development
 
