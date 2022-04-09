@@ -76,7 +76,7 @@
     "tap": "^14.10.7"
   },
   "dependencies": {
-    "@semantic-release/error": "^2.2.0",
+    "@semantic-release/error": "^3.0.0",
     "debug": "^4.1.1",
     "execa": "^4.0.2",
     "handlebars": "^4.7.7",
