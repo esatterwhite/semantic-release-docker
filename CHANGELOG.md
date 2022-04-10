@@ -1,5 +1,24 @@
 # Semantic Release Docker
 
+# [4.1.0](https://github.com/esatterwhite/semantic-release-docker/compare/v4.0.0...v4.1.0) (2022-04-10)
+
+
+### Chores
+
+* **deps**: semantic-release/error@3.0.0 [d55ff11](https://github.com/esatterwhite/semantic-release-docker/commit/d55ff1108a0130ce10932e409683fb741fb315d3) - Eric Satterwhite
+* **deps**: tap@16.0.0 [94d3340](https://github.com/esatterwhite/semantic-release-docker/commit/94d3340dba42ed702b71325ea5afc2f627df1fcc) - Eric Satterwhite
+
+
+### Features
+
+* **docker**: allow command to be run via docker in verify step [4646bd6](https://github.com/esatterwhite/semantic-release-docker/commit/4646bd681cb4d7ee4a48a9187fbe7dfe88686b78) - Eric Satterwhite, closes: [#20](https://github.com/esatterwhite/semantic-release-docker/issues/20)
+
+
+### Miscellaneous
+
+* add prerelease example [90158fd](https://github.com/esatterwhite/semantic-release-docker/commit/90158fdaa65b35a861ce40ca2c3a660f28446f72) - Eric Satterwhite
+* Update Readme [74f9910](https://github.com/esatterwhite/semantic-release-docker/commit/74f99107723223a67009c96a762b200f8d25621d) - GitHub
+
 # [4.0.0](https://github.com/esatterwhite/semantic-release-docker/compare/v3.1.2...v4.0.0) (2021-12-31)
 
 
