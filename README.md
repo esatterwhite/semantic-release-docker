@@ -125,7 +125,7 @@ The following handlebars template helpers are pre installed
 // release.config.js
 
 module.exports = {
-  branches: ['main']
+  branches: ['main'],
   plugins: [
     ['@codedependant/semantic-release-docker', {
       dockerTags: ['latest', '{{version}}', '{{major}}-latest', '{{major}}.{{minor}}'],
@@ -134,9 +134,9 @@ module.exports = {
       dockerRegistry: 'quay.io',
       dockerProject: 'codedependant',
       dockerArgs: {
-        API_TOKEN: true
-      , RELEASE_DATE: new Date().toISOString()
-      , RELEASE_VERSION: '{{next.version}}'
+        API_TOKEN: true,
+        RELEASE_DATE: new Date().toISOString(),
+        RELEASE_VERSION: '{{next.version}}'
       }
     }]
   ]
@@ -149,8 +149,8 @@ Alternatively, using global options w/ root configuration
 ```json5
 // package.json
 {
-  "name": "@codedependant/test-project"
-  "version": "1.0.0"
+  "name": "@codedependant/test-project",
+  "version": "1.0.0",
   "release": {
     "extends": "@internal/release-config-docker",
     "dockerTags": ["latest", "{{version}}", "{{major}}-latest", "{{major}}.{{minor}}"],
@@ -158,8 +158,8 @@ Alternatively, using global options w/ root configuration
     "dockerFile": "Dockerfile",
     "dockerRegistry": "quay.io",
     "dockerArgs": {
-      "GITHUB_TOKEN": true
-    , "SOME_VALUE": '{{git_sha}}'
+      "GITHUB_TOKEN": true,
+      "SOME_VALUE": '{{git_sha}}'
     }
   }
 }
