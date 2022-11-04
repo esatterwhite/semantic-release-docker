@@ -48,6 +48,7 @@ test('Image', async (t) => {
     , dockerfile: 'Dockerfile.test'
     , cwd: path.join(__dirname, 'build')
     , sha: 'hello'
+    , network: 'custom-network'
     })
     tt.equal(img.sha, 'hello')
     tt.match(img.opts, {
@@ -58,6 +59,7 @@ test('Image', async (t) => {
     , dockerfile: 'Dockerfile.test'
     , cwd: path.join(__dirname, 'build')
     , args: Map
+    , network: 'custom-network'
     }, 'default image options')
 
     tt.equal(img.context, path.join(__dirname, 'build', '.'), 'default image context')
@@ -171,6 +173,7 @@ test('Image', async (t) => {
 
       tt.deepEqual(img.build_cmd, [
         'build'
+      , '--network=default'
       , '--quiet'
       , '--tag'
       , 'quay.io/esatterwhite/test:abacadaba'
@@ -192,6 +195,7 @@ test('Image', async (t) => {
 
       tt.deepEqual(img.build_cmd, [
         'build'
+      , '--network=default'
       , '--quiet'
       , '--tag'
       , 'us.gcr.io/esatterwhite/foobar:1010101'
@@ -215,6 +219,7 @@ test('Image', async (t) => {
       img.arg('VALUE_FROM_ENV', true)
       tt.deepEqual(img.build_cmd, [
         'build'
+      , '--network=default'
       , '--quiet'
       , '--tag'
       , 'us.gcr.io/esatterwhite/foobar:1010101'

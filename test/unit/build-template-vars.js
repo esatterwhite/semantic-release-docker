@@ -40,6 +40,7 @@ test('buildTemplateVars', async (t) => {
   , minor: 0
   , patch: 0
   , version: '1.0.0'
+  , network: 'default'
   , next: {
       major: 1
     , minor: 0

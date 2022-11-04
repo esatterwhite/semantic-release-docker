@@ -54,6 +54,8 @@ omitted, it is assumed the docker daemon is already authenticated with the targe
 | `dockerArgs`      | _Optional_. Include additional values for docker's `build-arg`. Supports templating                                                                                    |                                                               |
 | `dockerPublish`   | _Optional_. Automatically push image tags during the publish phase.                                                                                                    | `true`                                                        |
 | `dockerVerifyCmd` | _Optional_. If specified, during the verify stage, the specified command will execute in a container of the build image. If the command errors, the release will fail. | `false`                                                       |
+| `dockerNetwork`   | _Optional_. Specify the Docker network to use while the image is building. |
+`default`
 
 ### Build Arguments
 
