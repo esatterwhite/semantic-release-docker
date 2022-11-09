@@ -1,5 +1,5 @@
 {
-  "name": "@sambunting/semantic-release-docker",
+  "name": "@esatterwhite/semantic-release-docker",
   "private": false,
   "version": "1.0.0",
   "description": "docker package",

@@ -9,7 +9,7 @@ test('read-pkg', async (t) => {
   t.test('reads cwd by default', async (tt) => {
     const pkg = await readPkg()
     tt.match(pkg, {
-      name: '@sambunting/semantic-release-docker'
+      name: '@esatterwhite/semantic-release-docker'
     , version: String
     })
   })
