@@ -1,7 +1,7 @@
 {
   "name": "@codedependant/semantic-release-docker",
   "private": false,
-  "version": "1.0.0",
+  "version": "4.1.0",
   "description": "docker package",
   "main": "index.js",
   "files": [
@@ -33,7 +33,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/codedependant/semantic-release-docker.git"
+    "url": "git+ssh://git@github.com/esatterwhite/semantic-release-docker.git"
   },
   "tap": {
     "ts": false,
