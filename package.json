@@ -1,5 +1,5 @@
 {
-  "name": "@esatterwhite/semantic-release-docker",
+  "name": "@codedependant/semantic-release-docker",
   "private": false,
   "version": "1.0.0",
   "description": "docker package",
@@ -33,7 +33,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/sambunting/semantic-release-docker.git"
+    "url": "https://github.com/codedependant/semantic-release-docker.git"
   },
   "tap": {
     "ts": false,
