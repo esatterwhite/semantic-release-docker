@@ -11,7 +11,7 @@ on:
 jobs:
   test:
     name: Test Suite
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
 
     steps:
       - name: Checkout
@@ -19,6 +19,9 @@ jobs:
 
       - name: Install
         run: npm install
+
+      - name: fix cgroups
+        run: sudo mkdir -p /sys/fs/cgroup/systemd && sudo mount -t cgroup -o none,name=systemd cgroup /sys/fs/cgroup/systemd && npm test
 
       - name: test
         run: npm test
