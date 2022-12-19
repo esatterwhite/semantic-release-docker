@@ -54,8 +54,7 @@ omitted, it is assumed the docker daemon is already authenticated with the targe
 | `dockerArgs`      | _Optional_. Include additional values for docker's `build-arg`. Supports templating                                                                                    |                                                               |
 | `dockerPublish`   | _Optional_. Automatically push image tags during the publish phase.                                                                                                    | `true`                                                        |
 | `dockerVerifyCmd` | _Optional_. If specified, during the verify stage, the specified command will execute in a container of the build image. If the command errors, the release will fail. | `false`                                                       |
-| `dockerNetwork`   | _Optional_. Specify the Docker network to use while the image is building. |
-`default`
+| `dockerNetwork`   | _Optional_. Specify the Docker network to use while the image is building.                                                                                             | `default`                                                     |
 
 ### Build Arguments
 
@@ -65,16 +64,16 @@ build argument is explicitly `true`, the value will be omitted and the value fro
 a matching environment variable will be utilized instead. This can be useful when trying to include
 secrets and other sensitive information
 
-| Argument Name       | Description                                                                                | Default                      |
-|---------------------|--------------------------------------------------------------------------------------------|------------------------------|
-| `SRC_DIRECTORY`     | The of the directory the build was triggered from                                          | The directory name of CWD    |
+| Argument Name       | Description                                                                               | Default                      |
+|---------------------|-------------------------------------------------------------------------------------------|------------------------------|
+| `SRC_DIRECTORY`     | The of the directory the build was triggered from                                         | The directory name of CWD    |
 | `TARGET_PATH`       | Path relative to the execution root. Useful for Sharing a Single Docker file in monorepos |                              |
-| `NPM_PACKAGE_NAME`  | The `name` property extracted from `package.json` - if present                             |                              |
-| `NPM_PACKAGE_SCOPE` | The parsed scope from the `name` property from `package.json` - sans `@`                   |                              |
-| `CONFIG_NAME`       | The configured name of the docker image.                                                   | The parsed package name      |
-| `CONFIG_PROJECT`    | The configured docker repo project name                                                    | The package scope if present |
-| `GIT_SHA`           | The commit SHA of the current release                                                      |                              |
-| `GIT_TAG`           | The git tag of the current release                                                         |                              |
+| `NPM_PACKAGE_NAME`  | The `name` property extracted from `package.json` - if present                            |                              |
+| `NPM_PACKAGE_SCOPE` | The parsed scope from the `name` property from `package.json` - sans `@`                  |                              |
+| `CONFIG_NAME`       | The configured name of the docker image.                                                  | The parsed package name      |
+| `CONFIG_PROJECT`    | The configured docker repo project name                                                   | The package scope if present |
+| `GIT_SHA`           | The commit SHA of the current release                                                     |                              |
+| `GIT_TAG`           | The git tag of the current release                                                        |                              |
 
 ### Template Variables
 
@@ -210,7 +209,7 @@ the default docker image tags for the 1.0.0 release would be `1.0.0`, `1-latest`
 }
 ```
 
-the docker tags for version `1.2.3` will be `1.2.3`, `1.2-latest`, `1-latest` and `latest`  
+the docker tags for version `1.2.3` will be `1.2.3`, `1.2-latest`, `1-latest` and `latest`
 the docker tags for version `2.3.4-beta.6` will be `2.3.4-beta.6`, `2.3-beta`, `2-beta` and `beta`
 
 ## Development
