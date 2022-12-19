@@ -1,5 +1,24 @@
 # Semantic Release Docker
 
+# [4.2.0](https://github.com/esatterwhite/semantic-release-docker/compare/v4.1.0...v4.2.0) (2022-12-19)
+
+
+### Chores
+
+* **ci**: downgrade github actions runner version [c6f1935](https://github.com/esatterwhite/semantic-release-docker/commit/c6f1935aec63e21a85c8e513dd74fed29a84562b) - Eric Satterwhite
+* **test**: regenerate the local docker registry certs [4cfa6e2](https://github.com/esatterwhite/semantic-release-docker/commit/4cfa6e2a912b69ff3cfc496b88dae449a982e5f4) - Eric Satterwhite
+* **test**: remove ci test temporarily [c28f199](https://github.com/esatterwhite/semantic-release-docker/commit/c28f199ab3d2e9bb85846e562c936c782f9440a5) - Eric Satterwhite
+
+
+### Documentation
+
+* fix broken table in  readme [e85e6f3](https://github.com/esatterwhite/semantic-release-docker/commit/e85e6f38f48e3c11ef88953e0cfa74276aab09a6) - Eric Satterwhite
+
+
+### Features
+
+* added dockerNetwork config option [d6f2def](https://github.com/esatterwhite/semantic-release-docker/commit/d6f2defa0a4cfa3a36b1b63e7cdfe13c700e632a) - Eric Satterwhite, closes: [#29](https://github.com/esatterwhite/semantic-release-docker/issues/29)
+
 # [4.1.0](https://github.com/esatterwhite/semantic-release-docker/compare/v4.0.0...v4.1.0) (2022-04-10)
 
 
