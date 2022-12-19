@@ -20,9 +20,6 @@ jobs:
       - name: Install
         run: npm install
 
-      - name: test
-        run: npm test
-
   release:
     name: release
     needs: test
