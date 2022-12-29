@@ -1,5 +1,12 @@
 # Semantic Release Docker
 
+# [4.3.0](https://github.com/esatterwhite/semantic-release-docker/compare/v4.2.0...v4.3.0) (2022-12-29)
+
+
+### Features
+
+* **config**: add option to disable post publish image removal [0c03cbd](https://github.com/esatterwhite/semantic-release-docker/commit/0c03cbd16bf7aa34cb435e3782492ad294e9bdfd) - Eric Satterwhite, closes: [#28](https://github.com/esatterwhite/semantic-release-docker/issues/28)
+
 # [4.2.0](https://github.com/esatterwhite/semantic-release-docker/compare/v4.1.0...v4.2.0) (2022-12-19)
 
 
