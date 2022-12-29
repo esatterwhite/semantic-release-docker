@@ -42,19 +42,20 @@ omitted, it is assumed the docker daemon is already authenticated with the targe
 
 ### Options
 
-| Option            | Description                                                                                                                                                            | Default                                                       |
-|-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------|
-| `dockerTags`      | _Optional_. An array of strings allowing to specify additional tags to apply to the image. Supports templating                                                         | [`latest`, `{{major}}-latest`, `{{version}}`]                 |
-| `dockerImage`     | _Optional_. The name of the image to release.                                                                                                                          | Parsed from package.json `name` property                      |
-| `dockerRegistry`  | _Optional_. The hostname and port used by the the registry in format `hostname[:port]`. Omit the port if the registry uses the default port                            | `null` (dockerhub)                                            |
-| `dockerProject`   | _Optional_. The project or repository name to publish the image to                                                                                                     | For scoped packages, the scope will be used, otherwise `null` |
-| `dockerFile`      | _Optional_. The path, relative to `$PWD` to a Docker file to build the target image with                                                                               | `Dockerfile`                                                  |
-| `dockerContext`   | _Optional_. A path, relative to `$PWD` to use as the build context A                                                                                                   | `.`                                                           |
-| `dockerLogin`     | _Optional_. Set to false it by pass docker login if the docker daemon is already authorized                                                                            | `true`                                                        |
-| `dockerArgs`      | _Optional_. Include additional values for docker's `build-arg`. Supports templating                                                                                    |                                                               |
-| `dockerPublish`   | _Optional_. Automatically push image tags during the publish phase.                                                                                                    | `true`                                                        |
-| `dockerVerifyCmd` | _Optional_. If specified, during the verify stage, the specified command will execute in a container of the build image. If the command errors, the release will fail. | `false`                                                       |
-| `dockerNetwork`   | _Optional_. Specify the Docker network to use while the image is building.                                                                                             | `default`                                                     |
+| Option            | Description                                                                                                                                                            | Type                        | Default                                                       |
+|-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------|---------------------------------------------------------------|
+| `dockerTags`      | _Optional_. An array of strings allowing to specify additional tags to apply to the image. Supports templating                                                         | [Array][]&lt;[String][]&gt; | [`latest`, `{{major}}-latest`, `{{version}}`]                 |
+| `dockerImage`     | _Optional_. The name of the image to release.                                                                                                                          | [String][]                  | Parsed from package.json `name` property                      |
+| `dockerRegistry`  | _Optional_. The hostname and port used by the the registry in format `hostname[:port]`. Omit the port if the registry uses the default port                            | [String][]                  | `null` (dockerhub)                                            |
+| `dockerProject`   | _Optional_. The project or repository name to publish the image to                                                                                                     | [String][]                  | For scoped packages, the scope will be used, otherwise `null` |
+| `dockerFile`      | _Optional_. The path, relative to `$PWD` to a Docker file to build the target image with                                                                               | [String][]                  | `Dockerfile`                                                  |
+| `dockerContext`   | _Optional_. A path, relative to `$PWD` to use as the build context A                                                                                                   | [String][]                  | `.`                                                           |
+| `dockerLogin`     | _Optional_. Set to false it by pass docker login if the docker daemon is already authorized                                                                            | [String][]                  | `true`                                                        |
+| `dockerArgs`      | _Optional_. Include additional values for docker's `build-arg`. Supports templating                                                                                    | [Object][]                  |                                                               |
+| `dockerPublish`   | _Optional_. Automatically push image tags during the publish phase.                                                                                                    | [Boolean][]                 | `true`                                                        |
+| `dockerVerifyCmd` | _Optional_. If specified, during the verify stage, the specified command will execute in a container of the build image. If the command errors, the release will fail. | [String][]                  | `false`                                                       |
+| `dockerNetwork`   | _Optional_. Specify the Docker network to use while the image is building.                                                                                             | [String][]                  | `default`                                                     |
+| `dockerAutoClean` | _Optional_. If set to true                                                                                                                                             | [Boolean][]                 | `true`                                                        |
 
 ### Build Arguments
 
@@ -79,22 +80,22 @@ secrets and other sensitive information
 
 String template will be passed these
 
-| Variable name  | Description                                                        | Type            |
-|----------------|--------------------------------------------------------------------|-----------------|
-| `git_sha`      | The commit SHA of the current release                              | `String`        |
-| `git_tag`      | The git tag of the current release                                 | `String`        |
-| `release_type` | The severity type of the current build (`major`, `minor`, `patch`) | `String`        |
-| `relase_notes` | The release notes blob associated with the release                 | `String`        |
-| `next`         | Semver object representing the next release                        | `Object`        |
-| `previous`     | Semver object representing the previous release                    | `Object`        |
-| `major`        | The major version of the next release                              | `Number`        |
-| `minor`        | The minor version of the next release                              | `Number`        |
-| `patch`        | The patch version of the next release                              | `Number`        |
-| `prerelease`   | The prerelease versions of the next release                        | `Array<Number>` |
-| `env`          | Environment variables that were set at build time                  | `Object`        |
-| `pkg`          | Values parsed from `package.json`                                  | `Object`        |
-| `build`        | A Random build hash representing the current execution context     | `String`        |
-| `now`          | Current timestamp is ISO 8601 format                               | `String`        |
+| Variable name  | Description                                                        | Type                        |
+|----------------|--------------------------------------------------------------------|-----------------------------|
+| `git_sha`      | The commit SHA of the current release                              | [String][]                  |
+| `git_tag`      | The git tag of the current release                                 | [String][]                  |
+| `release_type` | The severity type of the current build (`major`, `minor`, `patch`) | [String][]                  |
+| `relase_notes` | The release notes blob associated with the release                 | [String][]                  |
+| `next`         | Semver object representing the next release                        | [Object][]                  |
+| `previous`     | Semver object representing the previous release                    | [Object][]                  |
+| `major`        | The major version of the next release                              | [Number][]                  |
+| `minor`        | The minor version of the next release                              | [Number][]                  |
+| `patch`        | The patch version of the next release                              | [Number][]                  |
+| `prerelease`   | The prerelease versions of the next release                        | [Array][]&lt;[Number][]&gt; |
+| `env`          | Environment variables that were set at build time                  | [Object][]                  |
+| `pkg`          | Values parsed from `package.json`                                  | [Object][]                  |
+| `build`        | A Random build hash representing the current execution context     | [String][]                  |
+| `now`          | Current timestamp is ISO 8601 format                               | [String][]                  |
 
 ### Template Helpers
 
@@ -230,3 +231,5 @@ $ openssl req -new -newkey rsa:2048 -days 365 -nodes -x509 -keyout server.key -o
 [Boolean]: https://mdn.io/boolean
 [String]: https://mdn.io/string
 [Array]: https://mdn.io/array
+[Object]: https://mdn.io/object
+[Number]: https://mdn.io/number

@@ -43,12 +43,9 @@ test('steps::publish', async (t) => {
     tt.ok(auth, `authentication to ${DOCKER_REGISTRY_HOST} suceeds`)
 
     const image = await prepare(config, context)
-    tt.on('end', () => {
-      image.clean()
-    })
 
-    // removes images when done
     await publish(config, context)
+    await image.clean()
 
     const tags = ['1-previous', '2-foobar', '2.0.0']
     for (const tag of tags) {

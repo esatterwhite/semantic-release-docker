@@ -1,0 +1,4 @@
+FROM debian:buster-slim
+COPY . /opt/app
+WORKDIR /opt/app
+CMD ["echo", "$PWD"]

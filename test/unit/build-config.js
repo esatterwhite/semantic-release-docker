@@ -43,6 +43,7 @@ test('build-config', async (t) => {
     , project: null
     , build: 'id'
     , context: '.'
+    , clean: true
     })
   })
 
@@ -73,6 +74,7 @@ test('build-config', async (t) => {
     , project: 'internal'
     , build: 'id'
     , context: '.'
+    , clean: true
     })
   })
 
@@ -100,6 +102,7 @@ test('build-config', async (t) => {
       , project: 'scope'
       , build: 'id'
       , context: '.'
+      , clean: true
       })
     }
 
@@ -131,6 +134,7 @@ test('build-config', async (t) => {
       , project: 'kittens'
       , build: 'id'
       , context: '.'
+      , clean: true
       })
     }
 
@@ -140,6 +144,7 @@ test('build-config', async (t) => {
       , dockerImage: 'override'
       , dockerFile: 'Dockerfile.test'
       , dockerTags: 'latest,{{major}}-latest , fake, {{version}}'
+      , dockerAutoClean: false
       }, {
         cwd: path.join(t.testdirName, 'scoped')
       })
@@ -161,6 +166,7 @@ test('build-config', async (t) => {
       , project: null
       , build: 'id'
       , context: '.'
+      , clean: false
       })
     }
   })
