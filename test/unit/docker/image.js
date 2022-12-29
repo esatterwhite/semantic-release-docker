@@ -171,7 +171,7 @@ test('Image', async (t) => {
       , build_id: 'abacadaba'
       })
 
-      tt.deepEqual(img.build_cmd, [
+      tt.same(img.build_cmd, [
         'build'
       , '--network=default'
       , '--quiet'
@@ -193,7 +193,7 @@ test('Image', async (t) => {
       , context: path.join(__dirname, 'fake')
       })
 
-      tt.deepEqual(img.build_cmd, [
+      tt.same(img.build_cmd, [
         'build'
       , '--network=default'
       , '--quiet'
@@ -217,7 +217,7 @@ test('Image', async (t) => {
 
       img.arg('ARG_1', 'yes')
       img.arg('VALUE_FROM_ENV', true)
-      tt.deepEqual(img.build_cmd, [
+      tt.same(img.build_cmd, [
         'build'
       , '--network=default'
       , '--quiet'
@@ -249,9 +249,14 @@ test('Image', async (t) => {
     const sha = await img.build()
     tt.equal(sha, img.sha, 'image sha set after build')
     const {stdout} = await execa('docker', ['run', '--rm', img.name, 'ls', '-1'])
-    tt.deepEqual(
+    tt.same(
       stdout.split(os.EOL).sort()
-    , ['Dockerfile.test', 'Dockerfile.publish', 'Dockerfile.prepare'].sort()
+    , [
+        'Dockerfile.test'
+      , 'Dockerfile.publish'
+      , 'Dockerfile.prepare'
+      , 'Dockerfile.post'
+      ].sort()
     , 'files in image context')
   })
 
@@ -271,7 +276,7 @@ test('Image', async (t) => {
     , '-q', '--format={{ .Tag }}'
     ])
     const tags = stdout.split(os.EOL)
-    tt.deepEqual(tags.sort(), [build_id, '1.0.0'].sort(), 'image tags')
+    tt.same(tags.sort(), [build_id, '1.0.0'].sort(), 'image tags')
   })
 
   t.test('image#clean()', async (tt) => {
@@ -288,7 +293,7 @@ test('Image', async (t) => {
       'images', img.repo
     , '-q', '--format={{ .Tag }}'
     ])
-    tt.deepEqual(stdout, '', 'all tags removed')
+    tt.same(stdout, '', 'all tags removed')
   })
 
   t.test('image.context', async (tt) => {
