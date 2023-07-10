@@ -34,7 +34,8 @@ test('Image', async (t) => {
     , name: 'test'
     , dockerfile: 'Dockerfile'
     , cwd: process.cwd()
-    , flags: Array
+    , flags: Map
+    , args: Map
     }, 'default image options')
   })
 
@@ -58,7 +59,8 @@ test('Image', async (t) => {
     , name: 'test'
     , dockerfile: 'Dockerfile.test'
     , cwd: path.join(__dirname, 'build')
-    , flags: Array
+    , flags: Map
+    , args: Map
     , network: 'custom-network'
     }, 'default image options')
 

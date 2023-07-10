@@ -38,11 +38,13 @@ test('steps::prepare', async (t) => {
       }
     }
 
+
     const config = await buildConfig(build_id, {
       dockerRegistry: DOCKER_REGISTRY_HOST
     , dockerProject: 'docker-prepare'
     , dockerImage: 'fake'
     , dockerVerifyCmd: ['date', '+\'%x\'']
+    , dockerBuildCacheFrom: 'test'
     , dockerArgs: {
         MY_VARIABLE: '1'
       , TAG_TEMPLATE: '{{git_tag}}'
@@ -70,6 +72,11 @@ test('steps::prepare', async (t) => {
     tt.equal(image.opts.args.get('MAJOR_TEMPLATE'), '2', 'MAJOR_TEMPLATE value')
     tt.equal(image.opts.args.get('GIT_REF'), 'abacadaba', 'GIT_REF value')
     tt.match(image.opts.args.get('BUILD_DATE'), DATE_REGEX, 'BUILD_DATE value')
+    tt.match(
+      image.opts.flags.get('TAG_TEMPLATE')
+    , ['v2.1.2']
+    , 'TAG_TEMPLATE stored as a flag'
+    )
     tt.equal(image.context, path.join(context.cwd, config.context), 'docker context path')
 
     const {stdout} = await execa('docker', [

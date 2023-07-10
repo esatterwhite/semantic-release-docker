@@ -12,7 +12,7 @@ module.exports = {
   ]
 , extends: 'codedependant'
 , parserOptions: {
-    ecmaVersion: 2020
+    ecmaVersion: 2022
   , type: 'script'
   }
 , rules: {
