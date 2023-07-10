@@ -42,20 +42,22 @@ omitted, it is assumed the docker daemon is already authenticated with the targe
 
 ### Options
 
-| Option            | Description                                                                                                                                                            | Type                        | Default                                                       |
-|-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------|---------------------------------------------------------------|
-| `dockerTags`      | _Optional_. An array of strings allowing to specify additional tags to apply to the image. Supports templating                                                         | [Array][]&lt;[String][]&gt; | [`latest`, `{{major}}-latest`, `{{version}}`]                 |
-| `dockerImage`     | _Optional_. The name of the image to release.                                                                                                                          | [String][]                  | Parsed from package.json `name` property                      |
-| `dockerRegistry`  | _Optional_. The hostname and port used by the the registry in format `hostname[:port]`. Omit the port if the registry uses the default port                            | [String][]                  | `null` (dockerhub)                                            |
-| `dockerProject`   | _Optional_. The project or repository name to publish the image to                                                                                                     | [String][]                  | For scoped packages, the scope will be used, otherwise `null` |
-| `dockerFile`      | _Optional_. The path, relative to `$PWD` to a Docker file to build the target image with                                                                               | [String][]                  | `Dockerfile`                                                  |
-| `dockerContext`   | _Optional_. A path, relative to `$PWD` to use as the build context A                                                                                                   | [String][]                  | `.`                                                           |
-| `dockerLogin`     | _Optional_. Set to false it by pass docker login if the docker daemon is already authorized                                                                            | [String][]                  | `true`                                                        |
-| `dockerArgs`      | _Optional_. Include additional values for docker's `build-arg`. Supports templating                                                                                    | [Object][]                  |                                                               |
-| `dockerPublish`   | _Optional_. Automatically push image tags during the publish phase.                                                                                                    | [Boolean][]                 | `true`                                                        |
-| `dockerVerifyCmd` | _Optional_. If specified, during the verify stage, the specified command will execute in a container of the build image. If the command errors, the release will fail. | [String][]                  | `false`                                                       |
-| `dockerNetwork`   | _Optional_. Specify the Docker network to use while the image is building.                                                                                             | [String][]                  | `default`                                                     |
-| `dockerAutoClean` | _Optional_. If set to true                                                                                                                                             | [Boolean][]                 | `true`                                                        |
+| Option                 | Description                                                                                                                                                            | Type                                          | Default                                                       |
+|------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------|---------------------------------------------------------------|
+| `dockerTags`           | _Optional_. An array of strings allowing to specify additional tags to apply to the image. Supports templating                                                         | [Array][]&lt;[String][]&gt;                   | [`latest`, `{{major}}-latest`, `{{version}}`]                 |
+| `dockerImage`          | _Optional_. The name of the image to release.                                                                                                                          | [String][]                                    | Parsed from package.json `name` property                      |
+| `dockerRegistry`       | _Optional_. The hostname and port used by the the registry in format `hostname[:port]`. Omit the port if the registry uses the default port                            | [String][]                                    | `null` (dockerhub)                                            |
+| `dockerProject`        | _Optional_. The project or repository name to publish the image to                                                                                                     | [String][]                                    | For scoped packages, the scope will be used, otherwise `null` |
+| `dockerFile`           | _Optional_. The path, relative to `$PWD` to a Docker file to build the target image with                                                                               | [String][]                                    | `Dockerfile`                                                  |
+| `dockerContext`        | _Optional_. A path, relative to `$PWD` to use as the build context A                                                                                                   | [String][]                                    | `.`                                                           |
+| `dockerLogin`          | _Optional_. Set to false it by pass docker login if the docker daemon is already authorized                                                                            | [String][]                                    | `true`                                                        |
+| `dockerArgs`           | _Optional_. Include additional values for docker's `build-arg`. Supports templating                                                                                    | [Object][]                                    |                                                               |
+| `dockerPublish`        | _Optional_. Automatically push image tags during the publish phase.                                                                                                    | [Boolean][]                                   | `true`                                                        |
+| `dockerVerifyCmd`      | _Optional_. If specified, during the verify stage, the specified command will execute in a container of the build image. If the command errors, the release will fail. | [String][]                                    | `false`                                                       |
+| `dockerNetwork`        | _Optional_. Specify the Docker network to use while the image is building.                                                                                             | [String][]                                    | `default`                                                     |
+| `dockerAutoClean`      | _Optional_. If set to true                                                                                                                                             | [Boolean][]                                   | `true`                                                        |
+| `dockerBuildFlags`     | _Optional_. An object containing additional flags to the `docker build` command. Values can be strings or an array of strings                                          | [Object][]                                    | `{}`                                                          |
+| `dockerBuildCacheFrom` | _Optional_. A list of external cache sources. See [--cache-from][]                                                                                                     | [String][] &#124; [Array][]&lt;[String][]&gt; |                                                               |
 
 ### Build Arguments
 
@@ -117,7 +119,50 @@ The following handlebars template helpers are pre installed
 | `startswith` | returns true if a string starts with another                           | [Boolean][] | <pre lang="hbs">{{#if (starts myvar 'foo')}}{{ othervar }}{{/if}}</pre>                    |
 |    `upper`   | returns the upper cased varient of the input string                    |  [String][] | <pre lang="hbs">{{upper my_var}}</pre>                                                     |
 
+### Build Flags
 
+Using the `dockerBuildFlags` option allows you to pass arbitrary flags to the build command.
+If the standardized options are not sufficient, `dockerBuildFlags` is a perfect workaround
+until first class support can be added. This is considered and advanced feature, and you should
+know what you intend to do before using. There is no validation, and any configuration of the
+docker daemon required is expected to be done before hand. 
+
+Keys found in `dockerBuildFlags` are normalized as command line flags in the following manner:
+
+* If the key does not start with a `-` it will be prepended
+* all occurences of `_` will be re-written as `-`
+* Single letter keys are considered shorthands e.g. `p` becomes `-p`
+* Multi letter keys are considered long form e.g. `foo_bar` becomes `--foo-bar`
+* If the value is an array, the flag is repeated for each occurance
+* A `null` value may be used to omit the value and only inject the flag itself
+
+#### Example
+
+```javascript
+{
+  plugins: [
+    ['@codedependant/semantic-release-docker', {
+      dockerImage: 'my-image',
+      dockerRegistry: 'quay.io',
+      dockerProject: 'codedependant',
+      dockerCacheFrom: 'myname/myapp'
+      dockerBuildFlags: {
+        pull: null
+      , target: 'release'
+      },
+      dockerArgs: {
+        GITHUB_TOKEN: null
+      }
+    }]
+  ]
+}
+```
+
+This configuration, will generate the following build command
+
+```bash
+> docker build --network=default --quiet --tag quay.io/codedependant/my-image:abc123 --cache-from myname/myapp --build-arg GITHUB_TOKEN --pull --target release -f path/to/repo/Dockerfile /path/to/repo
+```
 
 ## Usage
 
@@ -135,8 +180,12 @@ module.exports = {
       dockerFile: 'Dockerfile',
       dockerRegistry: 'quay.io',
       dockerProject: 'codedependant',
+      dockerBuildFlags: {
+        pull: null
+      , target: 'release'
+      },
       dockerArgs: {
-        API_TOKEN: true
+        API_TOKEN: null
       , RELEASE_DATE: new Date().toISOString()
       , RELEASE_VERSION: '{{next.version}}'
       }
@@ -233,3 +282,4 @@ $ openssl req -new -newkey rsa:2048 -days 365 -nodes -x509 -keyout server.key -o
 [Array]: https://mdn.io/array
 [Object]: https://mdn.io/object
 [Number]: https://mdn.io/number
+[--cache-from]: https://docs.docker.com/engine/reference/commandline/build/#cache-from
