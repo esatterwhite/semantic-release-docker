@@ -1,5 +1,13 @@
 # Semantic Release Docker
 
+# [4.4.0](https://github.com/esatterwhite/semantic-release-docker/compare/v4.3.0...v4.4.0) (2023-07-11)
+
+
+### Features
+
+* **image**: add support for cache-from build flag [efae32d](https://github.com/esatterwhite/semantic-release-docker/commit/efae32d760bc0ef1978ad97f834b4cb034199ace) - Eric Satterwhite, closes: [#35](https://github.com/esatterwhite/semantic-release-docker/issues/35)
+* **image**: support arbitrary build flags [d7e875d](https://github.com/esatterwhite/semantic-release-docker/commit/d7e875d2b0b8de58e57c56e9ba24bf3c2db5df84) - Eric Satterwhite
+
 # [4.3.0](https://github.com/esatterwhite/semantic-release-docker/compare/v4.2.0...v4.3.0) (2022-12-29)
 
 
