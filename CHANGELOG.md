@@ -1,5 +1,12 @@
 # Semantic Release Docker
 
+# [4.5.0](https://github.com/esatterwhite/semantic-release-docker/compare/v4.4.0...v4.5.0) (2023-10-20)
+
+
+### Features
+
+* **config**: allow --quiet flag to be configurable [7abc74e](https://github.com/esatterwhite/semantic-release-docker/commit/7abc74ecdd96baa8d27ecb177defc137a64b482f) - Eric Satterwhite, closes: [#40](https://github.com/esatterwhite/semantic-release-docker/issues/40)
+
 # [4.4.0](https://github.com/esatterwhite/semantic-release-docker/compare/v4.3.0...v4.4.0) (2023-07-11)
 
 
