@@ -176,9 +176,9 @@ test('Image', async (t) => {
       tt.same(img.build_cmd, [
         'build'
       , '--network=default'
-      , '--quiet'
       , '--tag'
       , 'quay.io/esatterwhite/test:abacadaba'
+      , '--quiet'
       , '-f'
       , path.join(process.cwd(), 'Dockerfile')
       , process.cwd()
@@ -198,9 +198,9 @@ test('Image', async (t) => {
       tt.same(img.build_cmd, [
         'build'
       , '--network=default'
-      , '--quiet'
       , '--tag'
       , 'us.gcr.io/esatterwhite/foobar:1010101'
+      , '--quiet'
       , '-f'
       , path.join(__dirname, 'Dockerfile')
       , path.join(__dirname, 'fake')
@@ -222,9 +222,9 @@ test('Image', async (t) => {
       tt.same(img.build_cmd, [
         'build'
       , '--network=default'
-      , '--quiet'
       , '--tag'
       , 'us.gcr.io/esatterwhite/foobar:1010101'
+      , '--quiet'
       , '--build-arg'
       , 'ARG_1=yes'
       , '--build-arg'
@@ -233,6 +233,33 @@ test('Image', async (t) => {
       , path.join(__dirname, 'Dockerfile')
       , path.join(__dirname, 'fake')
       ], 'build command')
+    }
+    {
+      const img = new docker.Image({
+        name: 'foobar'
+      , registry: 'us.gcr.io'
+      , project: 'esatterwhite'
+      , build_id: '1010101'
+      , cwd: __dirname
+      , context: path.join(__dirname, 'fake')
+      , quiet: false
+      })
+
+      img.arg('ARG_2', 'no')
+      img.arg('VALUE_FROM_ENV', true)
+      tt.same(img.build_cmd, [
+        'build'
+      , '--network=default'
+      , '--tag'
+      , 'us.gcr.io/esatterwhite/foobar:1010101'
+      , '--build-arg'
+      , 'ARG_2=no'
+      , '--build-arg'
+      , 'VALUE_FROM_ENV'
+      , '-f'
+      , path.join(__dirname, 'Dockerfile')
+      , path.join(__dirname, 'fake')
+      ], 'build command - quiet = false')
     }
   })
 
