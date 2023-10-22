@@ -30,7 +30,7 @@ Run `npm i --save-dev @codedependant/semantic-release-docker` to install this se
 
 ### Docker registry authentication
 
-The `docker registry` authentication set via environment variables. It is not required, and if
+Authentication to a `docker registry` is set via environment variables. It is not required, and if
 omitted, it is assumed the docker daemon is already authenticated with the target registry.
 
 ### Environment variables
@@ -48,6 +48,7 @@ omitted, it is assumed the docker daemon is already authenticated with the targe
 | `dockerImage`          | _Optional_. The name of the image to release.                                                                                                                          | [String][]                                    | Parsed from package.json `name` property                      |
 | `dockerRegistry`       | _Optional_. The hostname and port used by the the registry in format `hostname[:port]`. Omit the port if the registry uses the default port                            | [String][]                                    | `null` (dockerhub)                                            |
 | `dockerProject`        | _Optional_. The project or repository name to publish the image to                                                                                                     | [String][]                                    | For scoped packages, the scope will be used, otherwise `null` |
+| `dockerPlatform`       | _Optional_. A list of target platofmrs to build for. If specified, [buildx][] Will be used to generate the final images                                                | [Array][]&lt;[String][]&gt;                   | `null` (default docker build behavior)                        |
 | `dockerFile`           | _Optional_. The path, relative to `$PWD` to a Docker file to build the target image with                                                                               | [String][]                                    | `Dockerfile`                                                  |
 | `dockerContext`        | _Optional_. A path, relative to `$PWD` to use as the build context A                                                                                                   | [String][]                                    | `.`                                                           |
 | `dockerLogin`          | _Optional_. Set to false it by pass docker login if the docker daemon is already authorized                                                                            | [String][]                                    | `true`                                                        |
@@ -58,6 +59,19 @@ omitted, it is assumed the docker daemon is already authenticated with the targe
 | `dockerAutoClean`      | _Optional_. If set to true                                                                                                                                             | [Boolean][]                                   | `true`                                                        |
 | `dockerBuildFlags`     | _Optional_. An object containing additional flags to the `docker build` command. Values can be strings or an array of strings                                          | [Object][]                                    | `{}`                                                          |
 | `dockerBuildCacheFrom` | _Optional_. A list of external cache sources. See [--cache-from][]                                                                                                     | [String][] &#124; [Array][]&lt;[String][]&gt; |                                                               |
+
+
+### BuildX Support
+
+Version 5.X includes initial and experimental support for multi-platform images via the [buildx][] plugin.
+This plugin assumes that the docker daemon and buildx have already been setup correctly.
+Platform specific builder must be setup and selected for this plugin to utilize [buildx][]
+
+> [!WARNING]
+>
+> When using buildx via the dockerPlatform option, images are not kept locally
+> and normal docker commands targeting those images will not work.
+> The `dockerVerifyCmd` behavior will only trigger a build and is unable to execute local command
 
 ### Build Arguments
 
@@ -180,6 +194,7 @@ module.exports = {
       dockerFile: 'Dockerfile',
       dockerRegistry: 'quay.io',
       dockerProject: 'codedependant',
+      dockerPlatform: ['linux/amd64', 'linux/arm64']
       dockerBuildFlags: {
         pull: null
       , target: 'release'
@@ -209,7 +224,7 @@ Alternatively, using global options w/ root configuration
     "dockerFile": "Dockerfile",
     "dockerRegistry": "quay.io",
     "dockerArgs": {
-      "GITHUB_TOKEN": true
+      "GITHUB_TOKEN": null
     , "SOME_VALUE": '{{git_sha}}'
     }
   }
@@ -283,3 +298,4 @@ $ openssl req -new -newkey rsa:2048 -days 365 -nodes -x509 -keyout server.key -o
 [Object]: https://mdn.io/object
 [Number]: https://mdn.io/number
 [--cache-from]: https://docs.docker.com/engine/reference/commandline/build/#cache-from
+[buildx]: https://docs.docker.com/reference/cli/docker/buildx/build

@@ -164,7 +164,7 @@ test('Image', async (t) => {
     }
   })
 
-  t.test('image#build_cmd', async (tt) => {
+  t.test('image#build_cmd (docker build)', async (tt) => {
     {
       const img = new docker.Image({
         name: 'test'
@@ -263,6 +263,78 @@ test('Image', async (t) => {
     }
   })
 
+  t.test('image#buildx_cmd', async (t) => {
+    {
+      const img = new docker.Image({
+        name: 'foobar'
+      , registry: 'us.gcr.io'
+      , project: 'esatterwhite'
+      , build_id: '1010101'
+      , cwd: __dirname
+      , tags: ['2.0.0', '2-latest']
+      , platform: ['linux/amd64']
+      , context: path.join(__dirname, 'fake')
+      })
+
+      img.arg('ARG_2', 'no')
+      img.arg('VALUE_FROM_ENV', true)
+      t.same(img.build_cmd, [
+        'buildx'
+      , 'build'
+      , '--network=default'
+      , '--quiet'
+      , '--tag'
+      , 'us.gcr.io/esatterwhite/foobar:2.0.0'
+      , '--tag'
+      , 'us.gcr.io/esatterwhite/foobar:2-latest'
+      , '--build-arg'
+      , 'ARG_2=no'
+      , '--build-arg'
+      , 'VALUE_FROM_ENV'
+      , '--platform'
+      , 'linux/amd64'
+      , '--pull'
+      , '--push'
+      , '-f'
+      , path.join(__dirname, 'Dockerfile')
+      , path.join(__dirname, 'fake')
+      ], 'buildx command')
+    }
+
+    {
+      const img = new docker.Image({
+        name: 'foobar'
+      , registry: 'us.gcr.io'
+      , project: 'esatterwhite'
+      , build_id: '1010101'
+      , cwd: __dirname
+      , tags: ['2.0.0', '2-latest']
+      , platform: ['linux/amd64']
+      , context: path.join(__dirname, 'fake')
+      , dry_run: true
+      })
+
+      img.arg('ARG_2', 'no')
+      img.arg('VALUE_FROM_ENV', true)
+      t.same(img.build_cmd, [
+        'buildx'
+      , 'build'
+      , '--network=default'
+      , '--quiet'
+      , '--build-arg'
+      , 'ARG_2=no'
+      , '--build-arg'
+      , 'VALUE_FROM_ENV'
+      , '--platform'
+      , 'linux/amd64'
+      , '--pull'
+      , '-f'
+      , path.join(__dirname, 'Dockerfile')
+      , path.join(__dirname, 'fake')
+      ], 'buildx command')
+    }
+  })
+
   t.test('image#build()', async (tt) => {
     const img = new docker.Image({
       name: 'test'
@@ -323,6 +395,8 @@ test('Image', async (t) => {
     , '-q', '--format={{ .Tag }}'
     ])
     tt.same(stdout, '', 'all tags removed')
+
+    tt.resolves(img.clean(), 'does not throw when no matching images found')
   })
 
   t.test('image.context', async (tt) => {

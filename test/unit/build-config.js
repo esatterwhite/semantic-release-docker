@@ -61,6 +61,7 @@ test('build-config', async (t) => {
     , nocache: false
     , publish: true
     , tags: ['latest', '{{major}}-latest', '{{version}}']
+    , platform: []
     , args: {
         SRC_DIRECTORY: 'one'
       , TARGET_PATH: 'workspace/one'
@@ -89,6 +90,7 @@ test('build-config', async (t) => {
       tt.match(config, {
         dockerfile: 'Dockerfile'
       , nocache: false
+      , platform: []
       , tags: ['latest', '{{major}}-latest', '{version}']
       , args: {
           SRC_DIRECTORY: 'scoped'
@@ -115,6 +117,7 @@ test('build-config', async (t) => {
       , dockerImage: 'override'
       , dockerFile: 'Dockerfile.test'
       , dockerPublish: false
+      , dockerPlatform: 'linux/amd64'
       , dockerBuildQuiet: 'false'
       }, {
         cwd: path.join(t.testdirName, 'scoped')
@@ -123,6 +126,7 @@ test('build-config', async (t) => {
         dockerfile: 'Dockerfile.test'
       , publish: false
       , nocache: false
+      , platform: ['linux/amd64']
       , tags: ['latest', '{{major}}-latest', '{{version}}']
       , args: {
           SRC_DIRECTORY: 'scoped'
@@ -150,6 +154,7 @@ test('build-config', async (t) => {
       , dockerFile: 'Dockerfile.test'
       , dockerTags: 'latest,{{major}}-latest , fake, {{version}}'
       , dockerAutoClean: false
+      , dockerPlatform: ['linux/amd64', 'linux/arm64']
       , dockerBuildQuiet: 'false'
       }, {
         cwd: path.join(t.testdirName, 'scoped')
@@ -157,6 +162,7 @@ test('build-config', async (t) => {
       tt.match(config, {
         dockerfile: 'Dockerfile.test'
       , nocache: false
+      , platform: ['linux/amd64', 'linux/arm64']
       , tags: ['latest', '{{major}}-latest', 'fake', '{{version}}']
       , args: {
           SRC_DIRECTORY: 'scoped'
