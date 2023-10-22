@@ -1,19 +1,11 @@
 version: '2.4'
 services:
-  docker:
-    privileged: true
-    image: docker:stable-dind
-    environment:
-      DOCKER_TLS_CERTDIR: ''
-    command: [
-      "--insecure-registry=registry:5000"
-    ]
-
   semantic-release:
     build:
       context: ../
     environment:
       DOCKER_HOST: tcp://docker:2375
+      DOCKER_BUILDKIT: 1
       TEST_DOCKER_REGISTRY: registry:5000
     command: npm run tap
     depends_on:

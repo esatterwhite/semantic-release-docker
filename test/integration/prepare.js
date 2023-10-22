@@ -2,7 +2,6 @@
 
 const path = require('path')
 const crypto = require('crypto')
-const sinon = require('sinon')
 const execa = require('execa')
 const {test, threw} = require('tap')
 const buildConfig = require('../../lib/build-config.js')
@@ -14,6 +13,15 @@ const DATE_REGEX = new RegExp(
   '^[\\d]{4}-[\\d]{2}-[\\d]{2}T[\\d]{2}:[\\d]{2}:[\\d]{2}'
     + '(\.[\\d]{1,6})?(Z|[\\+\\-][\\d]{2}:[\\d]{2})$' // eslint-disable-line no-useless-escape
 )
+
+function noop() {}
+
+const logger = {
+  success: noop
+, info: noop
+, debug: noop
+, fatal: noop
+}
 
 test('steps::prepare', async (t) => {
   t.test('build image created', async (tt) => {
@@ -30,12 +38,7 @@ test('steps::prepare', async (t) => {
       , gitTag: 'v2.1.2'
       , gitHead: 'abacadaba'
       }
-    , logger: {
-        success: sinon.stub()
-      , info: sinon.stub()
-      , debug: sinon.stub()
-      , fatal: sinon.stub()
-      }
+    , logger: logger
     }
 
 
@@ -95,12 +98,7 @@ test('steps::prepare', async (t) => {
       , gitTag: 'v2.1.2'
       , gitHead: 'abacadaba'
       }
-    , logger: {
-        success: sinon.stub()
-      , info: sinon.stub()
-      , debug: sinon.stub()
-      , fatal: sinon.stub()
-      }
+    , logger: logger
     }
 
     const config = await buildConfig(build_id, {

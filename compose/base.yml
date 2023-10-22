@@ -11,3 +11,13 @@ services:
     volumes:
       - $PWD/compose/certs:/certs
       - $PWD/compose/auth:/auth
+  docker:
+    privileged: true
+    image: docker:25-dind
+    environment:
+      DOCKER_TLS_CERTDIR: ''
+      DOCKER_BUILDKIT: 1
+    command: [
+      "--insecure-registry=registry:5000"
+    ]
+

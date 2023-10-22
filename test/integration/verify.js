@@ -12,7 +12,7 @@ const logger = {
   success: sinon.stub()
 , debug: sinon.stub()
 , info: sinon.stub()
-, fatal: sinon.stub()
+, fatal: console.error
 }
 
 test('steps::verify', async (t) => {
