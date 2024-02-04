@@ -1,5 +1,12 @@
 # Semantic Release Docker
 
+## [4.5.1](https://github.com/esatterwhite/semantic-release-docker/compare/v4.5.0...v4.5.1) (2024-02-04)
+
+
+### Bug Fixes
+
+* **image**: account for stderr when looking for an image sha [ba9eec2](https://github.com/esatterwhite/semantic-release-docker/commit/ba9eec2888fb4478a3a90f741de41a155b6c525e) - Eric Satterwhite, closes: [#46](https://github.com/esatterwhite/semantic-release-docker/issues/46)
+
 # [4.5.0](https://github.com/esatterwhite/semantic-release-docker/compare/v4.4.0...v4.5.0) (2023-10-20)
 
 
