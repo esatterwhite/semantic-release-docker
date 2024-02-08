@@ -87,7 +87,7 @@ String template will be passed these
 | `git_sha`      | The commit SHA of the current release                              | [String][]                  |
 | `git_tag`      | The git tag of the current release                                 | [String][]                  |
 | `release_type` | The severity type of the current build (`major`, `minor`, `patch`) | [String][]                  |
-| `relase_notes` | The release notes blob associated with the release                 | [String][]                  |
+| `release_notes`| The release notes blob associated with the release                 | [String][]                  |
 | `next`         | Semver object representing the next release                        | [Object][]                  |
 | `previous`     | Semver object representing the previous release                    | [Object][]                  |
 | `major`        | The major version of the next release                              | [Number][]                  |
