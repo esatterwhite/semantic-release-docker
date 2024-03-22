@@ -1,5 +1,12 @@
 # Semantic Release Docker
 
+## [5.0.2](https://github.com/esatterwhite/semantic-release-docker/compare/v5.0.1...v5.0.2) (2024-03-22)
+
+
+### Bug Fixes
+
+* **config**: propgate dry run option to docker image [1438ded](https://github.com/esatterwhite/semantic-release-docker/commit/1438dedae17c45eeb88f17b6108d343de283f10f) - Eric Satterwhite
+
 ## [5.0.1](https://github.com/esatterwhite/semantic-release-docker/compare/v5.0.0...v5.0.1) (2024-03-22)
 
 
