@@ -1,5 +1,12 @@
 # Semantic Release Docker
 
+## [5.0.1](https://github.com/esatterwhite/semantic-release-docker/compare/v5.0.0...v5.0.1) (2024-03-22)
+
+
+### Bug Fixes
+
+* **config**: include the dry-run param from input options [2de549f](https://github.com/esatterwhite/semantic-release-docker/commit/2de549f8dc2dcdc9741c06959ce0d120dd8b5fc5) - Eric Satterwhite
+
 # [5.0.0](https://github.com/esatterwhite/semantic-release-docker/compare/v4.5.1...v5.0.0) (2024-03-22)
 
 
