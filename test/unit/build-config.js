@@ -45,11 +45,13 @@ test('build-config', async (t) => {
     , context: '.'
     , quiet: true
     , clean: true
+    , dry_run: false
     })
   })
 
   t.test('nested workspace: target resolution', async (tt) => {
     const config = await buildConfig('id', {
+      dryRun: true
     }, {
       options: {
         root: t.testdirName
@@ -77,6 +79,7 @@ test('build-config', async (t) => {
     , build: 'id'
     , context: '.'
     , quiet: true
+    , dry_run: true
     , clean: true
     })
   })
