@@ -1,5 +1,28 @@
 # Semantic Release Docker
 
+# [5.0.0](https://github.com/esatterwhite/semantic-release-docker/compare/v4.5.1...v5.0.0) (2024-03-22)
+
+
+### Chores
+
+* **compose**: update test registry certs [fa8d771](https://github.com/esatterwhite/semantic-release-docker/commit/fa8d771f8f3381e3b2327a29ab10bb27b1257d1e) - Eric Satterwhite
+
+
+### Features
+
+* **docker**: include support for buildx [ccf9954](https://github.com/esatterwhite/semantic-release-docker/commit/ccf9954fdbad0c25c4ce7b8afcf7730b9652fe76) - Eric Satterwhite, closes: [#44](https://github.com/esatterwhite/semantic-release-docker/issues/44) [#39](https://github.com/esatterwhite/semantic-release-docker/issues/39)
+
+
+### Miscellaneous
+
+* **README.md**: fix typo in README.md [700e2f0](https://github.com/esatterwhite/semantic-release-docker/commit/700e2f0543a1fbd7d59b6ead84870bc8c5cfc3b3) - Eric Satterwhite
+
+
+### **BREAKING CHANGES**
+
+* **docker:** images built with buildx will not be stored locally
+* **docker:** dockerVerifyCmd will only take effect during dry runs (--dry-run)
+
 ## [4.5.1](https://github.com/esatterwhite/semantic-release-docker/compare/v4.5.0...v4.5.1) (2024-02-04)
 
 
