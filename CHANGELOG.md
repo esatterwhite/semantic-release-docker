@@ -1,5 +1,12 @@
 # Semantic Release Docker
 
+## [5.0.3](https://github.com/esatterwhite/semantic-release-docker/compare/v5.0.2...v5.0.3) (2024-03-25)
+
+
+### Bug Fixes
+
+* **verify**: fix logic around the conditional prepare step [ae8335a](https://github.com/esatterwhite/semantic-release-docker/commit/ae8335a654bf844c3186a7d24ec068f03ced3fe5) - Eric Satterwhite
+
 ## [5.0.2](https://github.com/esatterwhite/semantic-release-docker/compare/v5.0.1...v5.0.2) (2024-03-22)
 
 
