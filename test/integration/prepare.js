@@ -41,7 +41,6 @@ test('steps::prepare', async (t) => {
     , logger: logger
     }
 
-
     const config = await buildConfig(build_id, {
       dockerRegistry: DOCKER_REGISTRY_HOST
     , dockerProject: 'docker-prepare'
@@ -57,7 +56,7 @@ test('steps::prepare', async (t) => {
       }
     , dockerFile: 'docker/Dockerfile.prepare'
     , dockerContext: 'docker'
-    }, context)
+    }, {...context, dryRun: true})
 
     tt.match(
       await verify(config, context)
