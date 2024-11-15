@@ -7,7 +7,19 @@ services:
       DOCKER_HOST: tcp://docker:2375
       DOCKER_BUILDKIT: 1
       TEST_DOCKER_REGISTRY: registry:5000
-    command: npm run tap
+    command: |
+      sh -c '
+      for i in $(seq 1 10);
+      do
+        if nc -z -v docker 2375; then
+          break
+        else
+          echo "docker daemon not availabe waiting for 5 seconds and retring"
+          sleep 5
+        fi
+      done
+      npm run tap 
+      '
     depends_on:
       - docker
       - registry
