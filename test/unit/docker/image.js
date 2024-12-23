@@ -348,6 +348,7 @@ test('Image', async (t) => {
 
     tt.notOk(img.sha, 'no show before build')
     const sha = await img.build()
+    tt.ok(sha, 'sha value returned from build function')
     tt.equal(sha, img.sha, 'image sha set after build')
     const {stdout} = await execa('docker', ['run', '--rm', img.name, 'ls', '-1'])
     tt.same(
