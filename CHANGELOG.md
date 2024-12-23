@@ -1,5 +1,12 @@
 # Semantic Release Docker
 
+## [5.0.4](https://github.com/esatterwhite/semantic-release-docker/compare/v5.0.3...v5.0.4) (2024-12-23)
+
+
+### Continuous Integration
+
+* fix test [a4b886c](https://github.com/esatterwhite/semantic-release-docker/commit/a4b886cbfdbe200970210aed6633363de44bab28) - Eric Satterwhite
+
 ## [5.0.3](https://github.com/esatterwhite/semantic-release-docker/compare/v5.0.2...v5.0.3) (2024-03-25)
 
 
