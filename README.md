@@ -277,6 +277,34 @@ the default docker image tags for the 1.0.0 release would be `1.0.0`, `1-latest`
 the docker tags for version `1.2.3` will be `1.2.3`, `1.2-latest`, `1-latest` and `latest`
 the docker tags for version `2.3.4-beta.6` will be `2.3.4-beta.6`, `2.3-beta`, `2-beta` and `beta`
 
+## GitHub Actions
+
+The plugin has some basic support for github actions by exposing several outputs and environment variables
+during the publish stage
+
+> [!WARNING]
+>
+> When using buildx image shas are different per platform, and as such using the shas directly
+> is not supported and may result in unexpected results.
+
+### Outputs
+
+| name                     | description                                                                        | example                                                            |
+|--------------------------|------------------------------------------------------------------------------------|--------------------------------------------------------------------|
+| `docker_image`           | The full name of the docker image including the registry, sans any tag information | quay.io/codedependant/my-image                                     |
+| `docker_image_build_id`  | The unique build id used to initial build the image during a release               |                                                                    |
+| `docker_image_sha_short` | A shorted version of the image sha value suitable for referencing the image        | `b94d27b9934d3e0`                                                  |
+| `docker_image_sha_long`  | The full sha256 value that points the image that was build during a release        | `b94d27b9934d3e08a52e52d7da7dabfac484efe37a5380ee9088f7ace2efcde9` |
+
+### Environment Variables
+
+| name                                      | description                                                                        | example                                                            |
+|-------------------------------------------|------------------------------------------------------------------------------------|--------------------------------------------------------------------|
+| `SEMANTIC_RELEASE_DOCKER_IMAGE`           | The full name of the docker image including the registry, sans any tag information | quay.io/codedependant/my-image                                     |
+| `SEMANTIC_RELEASE_DOCKER_IMAGE_BUILD_ID`  | The unique build id used to initial build the image during a release               |                                                                    |
+| `SEMANTIC_RELEASE_DOCKER_IMAGE_SHA_SHORT` | A shorted version of the image sha value suitable for referencing the image        | `b94d27b9934d3e0`                                                  |
+| `SEMANTIC_RELEASE_DOCKER_IMAGE_SHA_LONG`  | The full sha256 value that points the image that was build during a release        | `b94d27b9934d3e08a52e52d7da7dabfac484efe37a5380ee9088f7ace2efcde9` |
+
 ## Development
 
 ### Docker Registry
