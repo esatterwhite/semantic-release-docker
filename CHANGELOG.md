@@ -1,5 +1,17 @@
 # Semantic Release Docker
 
+# [5.1.0](https://github.com/esatterwhite/semantic-release-docker/compare/v5.0.4...v5.1.0) (2024-12-30)
+
+
+### Chores
+
+* **deps**: actions/core@1.11.1 [dd03ed4](https://github.com/esatterwhite/semantic-release-docker/commit/dd03ed4c4e9624e578b7f9b35e370c32463810f5) - Eric Satterwhite
+
+
+### Features
+
+* **plugin**: add basic support for github actions [01085f6](https://github.com/esatterwhite/semantic-release-docker/commit/01085f68ffba854f1a4923879d9dfcfdf589eaf0) - Eric Satterwhite, closes: [#49](https://github.com/esatterwhite/semantic-release-docker/issues/49)
+
 ## [5.0.4](https://github.com/esatterwhite/semantic-release-docker/compare/v5.0.3...v5.0.4) (2024-12-23)
 
 
