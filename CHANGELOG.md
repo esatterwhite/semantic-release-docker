@@ -1,5 +1,20 @@
 # Semantic Release Docker
 
+## [5.1.1](https://github.com/esatterwhite/semantic-release-docker/compare/v5.1.0...v5.1.1) (2025-05-24)
+
+
+### Bug Fixes
+
+* **ci**: update actions runner dependencies [1f23b01](https://github.com/esatterwhite/semantic-release-docker/commit/1f23b01b6f8ddec193eada6e9a441bba95c739dc) - Eric Satterwhite
+* **plugin**: better support for multiple plugin instances [8b6621c](https://github.com/esatterwhite/semantic-release-docker/commit/8b6621c60a4ba40d16d5ed026cd49c23396c6e98) - Eric Satterwhite, closes: [#60](https://github.com/esatterwhite/semantic-release-docker/issues/60)
+
+
+### Chores
+
+* **compose**: update docker registry certs [4513f83](https://github.com/esatterwhite/semantic-release-docker/commit/4513f83a3eb9eb0bdab4e05ef132290cfccc0f8e) - Eric Satterwhite
+* **deps**: object-hash@3.0.0 [e04e9d3](https://github.com/esatterwhite/semantic-release-docker/commit/e04e9d373c44c6145ebae3170d2b878dedccafc5) - Eric Satterwhite
+* **deps**: stream-buffers@3.0.3 [b937a46](https://github.com/esatterwhite/semantic-release-docker/commit/b937a4693ab054d3496a6f902024cd70ff7c7543) - Eric Satterwhite
+
 # [5.1.0](https://github.com/esatterwhite/semantic-release-docker/compare/v5.0.4...v5.1.0) (2024-12-30)
 
 
