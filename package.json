@@ -74,6 +74,7 @@
     "eslint-config-codedependant": "^3.0.0",
     "semantic-release": "17",
     "sinon": "^9.0.2",
+    "stream-buffers": "^3.0.3",
     "tap": "^16.0.0"
   },
   "dependencies": {
