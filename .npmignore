@@ -2,7 +2,7 @@
 compose/
 node_modules/
 coverage/
-release.config.js
+release.config.cjs
 pnpm-lock.yaml
 .github/
 .nyc_output/

@@ -13,13 +13,11 @@ module.exports = {
 , extends: 'codedependant'
 , parserOptions: {
     ecmaVersion: 2022
-  , type: 'script'
+  , sourceType: 'module'
   }
 , rules: {
     'object-shorthand': 0
-  , 'sensible/check-require': [2, 'always', {
-      root: __dirname
-    }]
+  , 'sensible/check-require': 0
   , 'no-unused-vars': [
       'error', {
         varsIgnorePattern: '_'

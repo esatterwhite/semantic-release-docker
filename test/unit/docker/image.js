@@ -1,11 +1,13 @@
-'use strict'
+import os from 'os'
+import path from 'path'
+import crypto from 'crypto'
+import {fileURLToPath} from 'url'
+import execa from 'execa'
+import tap from 'tap'
+const {test, threw} = tap
+import docker from '../../../lib/docker/index.js'
 
-const os = require('os')
-const path = require('path')
-const crypto = require('crypto')
-const execa = require('execa')
-const {test, threw} = require('tap')
-const docker = require('../../../lib/docker/index.js')
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 function random() {
   return crypto.randomBytes(5).toString('hex')

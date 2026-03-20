@@ -1,17 +1,19 @@
-'use strict'
+import os from 'os'
+import crypto from 'crypto'
+import path from 'path'
+import {fileURLToPath} from 'url'
+import sinon from 'sinon'
+import execa from 'execa'
+import tap from 'tap'
+const {test, threw} = tap
+import buildConfig from '../../lib/build-config.js'
+import verify from '../../lib/verify.js'
+import prepare from '../../lib/prepare.js'
+import publish from '../../lib/publish.js'
+import success from '../../lib/success.js'
+import fail from '../../lib/fail.js'
 
-const os = require('os')
-const crypto = require('crypto')
-const path = require('path')
-const sinon = require('sinon')
-const execa = require('execa')
-const {test, threw} = require('tap')
-const buildConfig = require('../../lib/build-config.js')
-const verify = require('../../lib/verify.js')
-const prepare = require('../../lib/prepare.js')
-const publish = require('../../lib/publish.js')
-const success = require('../../lib/success.js')
-const fail = require('../../lib/fail.js')
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const fixturedir = path.join(__dirname, '..', 'fixture')
 
 const DOCKER_REGISTRY_HOST = process.env.TEST_DOCKER_REGISTRY || 'localhost:5000'

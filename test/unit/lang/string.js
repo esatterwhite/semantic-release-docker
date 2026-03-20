@@ -1,7 +1,6 @@
-'use strict'
-
-const {test, threw} = require('tap')
-const string = require('../../../lib/lang/string/index.js')
+import tap from 'tap'
+const {test, threw} = tap
+import string from '../../../lib/lang/string/index.js'
 
 test('string', async (t) => {
   t.test('template', async (t) => {

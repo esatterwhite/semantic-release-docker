@@ -1,16 +1,14 @@
-'use strict'
-
-const docker = require('./lib/docker/index.js')
-const dockerPrepare = require('./lib/prepare.js')
-const dockerVerify = require('./lib/verify.js')
-const dockerPublish = require('./lib/publish.js')
-const buildConfig = require('./lib/build-config.js')
-const dockerSuccess = require('./lib/success.js')
-const dockerFail = require('./lib/fail.js')
+import docker from './lib/docker/index.js'
+import dockerPrepare from './lib/prepare.js'
+import dockerVerify from './lib/verify.js'
+import dockerPublish from './lib/publish.js'
+import buildConfig from './lib/build-config.js'
+import dockerSuccess from './lib/success.js'
+import dockerFail from './lib/fail.js'
 
 // map multiple images to a unique sha
 const IMAGES = new Map()
-module.exports = {
+export {
   buildConfig
 , fail
 , prepare
@@ -58,4 +56,3 @@ async function verifyConditions(config, context) {
   IMAGES.set(opts.build, image)
   return dockerVerify(opts, context)
 }
-

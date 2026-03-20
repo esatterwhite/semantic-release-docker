@@ -1,9 +1,7 @@
-'use strict'
+import os from 'os'
+import execa from 'execa'
 
-const os = require('os')
-const execa = require('execa')
-
-module.exports = tags
+export default tags
 
 async function tags(cwd, hash) {
   const cmd = hash

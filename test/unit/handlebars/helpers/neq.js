@@ -1,7 +1,8 @@
-'use strict'
+import tap from 'tap'
+const {test, threw} = tap
+import helpers from '../../../../lib/handlebars/helpers/index.js'
 
-const {test, threw} = require('tap')
-const {neq} = require('../../../../lib/handlebars/helpers')
+const {neq} = helpers
 
 test('handlebars helpers', async (t) => {
   t.test('neq', async (t) => {

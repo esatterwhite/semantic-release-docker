@@ -1,13 +1,21 @@
-'use strict'
+import add from './add.js'
+import commit from './commit.js'
+import head from './head.js'
+import initOrigin from './init-origin.js'
+import initRemote from './init-remote.js'
+import init from './init.js'
+import push from './push.js'
+import tag from './tag.js'
+import tags from './tags.js'
 
-module.exports = {
-  add: require('./add.js')
-, commit: require('./commit.js')
-, head: require('./head.js')
-, initOrigin: require('./init-origin.js')
-, initRemote: require('./init-remote.js')
-, init: require('./init.js')
-, push: require('./push.js')
-, tag: require('./tag.js')
-, tags: require('./tags.js')
+export {
+  add
+, commit
+, head
+, initOrigin
+, initRemote
+, init
+, push
+, tag
+, tags
 }

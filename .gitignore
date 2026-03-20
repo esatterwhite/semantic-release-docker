@@ -25,6 +25,9 @@ coverage
 # nyc test coverage
 .nyc_output
 
+# tap test fixtures
+.tap
+
 # Grunt intermediate storage (https://gruntjs.com/creating-plugins#storing-task-files)
 .grunt
 

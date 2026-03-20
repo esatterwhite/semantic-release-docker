@@ -1,9 +1,7 @@
-'use strict'
+import execa from 'execa'
+import head from './head.js'
 
-const execa = require('execa')
-const head = require('./head.js')
-
-module.exports = commit
+export default commit
 
 async function commit(cwd, message) {
   await execa('git', ['commit', '-m', message], {cwd: cwd})

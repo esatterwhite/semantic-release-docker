@@ -1,13 +1,12 @@
-'use strict'
+import {promisify} from 'util'
+import {exec as execCb} from 'child_process'
+import execa from 'execa'
+import {WritableStreamBuffer} from 'stream-buffers'
+import tap from 'tap'
+const {test, threw} = tap
+import * as git from '../common/git/index.js'
 
-const {promisify} = require('util')
-const exec = promisify(require('child_process').exec)
-const sematicRelease = require('semantic-release')
-const execa = require('execa')
-const {WritableStreamBuffer} = require('stream-buffers')
-const {test, threw} = require('tap')
-const git = require('../common/git/index.js')
-const initOrigin = require('../common/git/init-origin.js')
+const exec = promisify(execCb)
 const DOCKER_REGISTRY_HOST = process.env.TEST_DOCKER_REGISTRY || 'localhost:5000'
 const stringify = JSON.stringify
 
@@ -51,6 +50,7 @@ test('docker multiple image release', async (t) => {
     cwd: cwd
   })
 
+  const {default: sematicRelease} = await import('semantic-release')
   const result = await sematicRelease({
     ci: true
   , repositoryUrl: origin

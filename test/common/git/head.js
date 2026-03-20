@@ -1,8 +1,6 @@
-'use strict'
+import execa from 'execa'
 
-const execa = require('execa')
-
-module.exports = head
+export default head
 
 async function head(cwd) {
   const {stdout} = await execa('git', ['rev-parse', 'HEAD'], {cwd: cwd})

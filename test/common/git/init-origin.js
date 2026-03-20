@@ -1,9 +1,7 @@
-'use strict'
+import execa from 'execa'
+import initRemote from './init-remote.js'
 
-const execa = require('execa')
-const initRemote = require('./init-remote.js')
-
-module.exports = initOrigin
+export default initOrigin
 
 async function initOrigin(cwd) {
   const origin = await initRemote()

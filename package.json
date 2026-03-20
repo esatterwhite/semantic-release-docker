@@ -3,20 +3,31 @@
   "private": false,
   "version": "5.1.1",
   "description": "docker package",
-  "main": "index.js",
+  "type": "module",
+  "main": "index.cjs",
+  "exports": {
+    ".": {
+      "import": "./index.js",
+      "require": "./index.cjs"
+    }
+  },
+  "engines": {
+    "node": ">=22"
+  },
   "files": [
     "lib/",
     "README.md",
     "CHANGELOG.md",
     "LICENSE",
     "package.json",
-    "index.js"
+    "index.js",
+    "index.cjs"
   ],
   "scripts": {
     "test": "docker-compose -f compose/base.yml -f compose/test.yml up --exit-code-from semantic-release --force-recreate --remove-orphans --build",
     "start": "docker-compose -f compose/base.yml -f compose/dev.yml up --force-recreate --remove-orphans --build",
     "stop": "docker-compose -f compose/base.yml -f compose/dev.yml down",
-    "tap": "tap",
+    "tap": "c8 tap",
     "lint": "eslint .",
     "lint:fix": "npm run lint -- --fix",
     "local": "env $(cat env/local.env)",
@@ -37,53 +48,63 @@
     "url": "git+ssh://git@github.com/esatterwhite/semantic-release-docker.git"
   },
   "tap": {
-    "ts": false,
-    "jsx": false,
-    "timeout": 60,
-    "browser": false,
+    "timeout": 120,
+    "disable-coverage": true,
+    "include": [
+      "test/unit/**/*.js",
+      "test/integration/**/*.js"
+    ]
+  },
+  "c8": {
     "check-coverage": true,
     "lines": 95,
     "branches": 95,
     "statements": 95,
     "functions": 95,
-    "files": [
-      "test/unit",
-      "test/integration"
+    "all": true,
+    "src": "lib",
+    "exclude": [
+      "coverage/",
+      "test/",
+      ".eslintrc.cjs",
+      "release.config.cjs",
+      "index.cjs"
     ],
-    "coverage-report": [
+    "reporter": [
       "text",
       "text-summary",
       "json",
       "json-summary",
       "html"
-    ],
-    "nyc-arg": [
-      "--exclude=coverage/",
-      "--exclude=test/",
-      "--exclude=.eslintrc.js",
-      "--exclude=release.config.js",
-      "--all"
     ]
   },
   "devDependencies": {
-    "@codedependant/release-config-npm": "^1.0.4",
-    "@semantic-release/changelog": "^5.0.1",
-    "@semantic-release/git": "^9.0.0",
-    "@semantic-release/github": "^7.0.7",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^12.0.6",
+    "c8": "^11.0.0",
     "eslint": "^8.5.0",
     "eslint-config-codedependant": "^3.0.0",
-    "semantic-release": "17",
-    "sinon": "^9.0.2",
+    "semantic-release": "^25.0.3",
+    "sinon": "^21.0.3",
     "stream-buffers": "^3.0.3",
-    "tap": "^16.0.0"
+    "tap": "^21.6.2"
   },
   "dependencies": {
-    "@actions/core": "^1.11.1",
-    "@semantic-release/error": "^3.0.0",
+    "@actions/core": "^3.0.0",
+    "@semantic-release/error": "^4.0.0",
     "debug": "^4.1.1",
     "execa": "^4.0.2",
     "handlebars": "^4.7.7",
     "object-hash": "^3.0.0",
     "semver": "^7.3.2"
-  }
+  },
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "bugs": {
+    "url": "https://github.com/esatterwhite/semantic-release-docker/issues"
+  },
+  "homepage": "https://github.com/esatterwhite/semantic-release-docker#readme"
 }

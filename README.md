@@ -183,7 +183,7 @@ This configuration, will generate the following build command
 **full configuration**:
 
 ```javascript
-// release.config.js
+// release.config.cjs
 
 module.exports = {
   branches: ['main']

@@ -1,8 +1,7 @@
-'use strict'
-
-const {test, threw} = require('tap')
-const buildConfig = require('../../lib/build-config.js')
-const buildTemplateVars = require('../../lib/build-template-vars.js')
+import tap from 'tap'
+const {test, threw} = tap
+import buildConfig from '../../lib/build-config.js'
+import buildTemplateVars from '../../lib/build-template-vars.js'
 
 test('buildTemplateVars', async (t) => {
   const cwd = t.testdir({

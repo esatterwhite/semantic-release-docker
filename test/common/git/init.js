@@ -1,11 +1,9 @@
-'use strict'
+import path from 'path'
+import os from 'os'
+import {promises as fs} from 'fs'
+import execa from 'execa'
 
-const path = require('path')
-const os = require('os')
-const {promises: fs} = require('fs')
-const execa = require('execa')
-
-module.exports = init
+export default init
 
 async function init(dir, branch = 'main') {
   const cwd = dir || await fs.mkdtemp(path.join(os.tmpdir(), path.sep))

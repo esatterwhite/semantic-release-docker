@@ -1,8 +1,6 @@
-'use strict'
+import execa from 'execa'
 
-const execa = require('execa')
-
-module.exports = tag
+export default tag
 
 async function tag(cwd, name, hash) {
   const args = hash

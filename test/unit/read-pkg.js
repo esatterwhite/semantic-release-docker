@@ -1,8 +1,10 @@
-'use strict'
+import path from 'path'
+import {fileURLToPath} from 'url'
+import tap from 'tap'
+const {test, threw} = tap
+import readPkg from '../../lib/read-pkg.js'
 
-const path = require('path')
-const {test, threw} = require('tap')
-const readPkg = require('../../lib/read-pkg.js')
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 const fixturedir = path.join(__dirname, '..', 'fixture')
 test('read-pkg', async (t) => {

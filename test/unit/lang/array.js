@@ -1,7 +1,6 @@
-'use strict'
-
-const {test, threw} = require('tap')
-const array = require('../../../lib/lang/array/index.js')
+import tap from 'tap'
+const {test, threw} = tap
+import array from '../../../lib/lang/array/index.js'
 
 test('array', async (t) => {
   t.test('toArray', async (t) => {
@@ -24,7 +23,7 @@ test('array', async (t) => {
         args.push(current.sep)
       }
 
-      t.deepEqual(
+      t.same(
         array.toArray(...args)
       , current.expected
       , current.message || `toArray(${current.value}) == ${current.expected}`

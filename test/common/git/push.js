@@ -1,8 +1,6 @@
-'use strict'
+import execa from 'execa'
 
-const execa = require('execa')
-
-module.exports = push
+export default push
 
 async function push(cwd, remote = 'origin', branch = 'main') {
   await execa('git', ['push', '--tags', remote, `HEAD:${branch}`], {cwd: cwd})

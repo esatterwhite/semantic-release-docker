@@ -1,8 +1,8 @@
-'use strict'
+import execa from 'execa'
+import tap from 'tap'
+const {test, threw} = tap
+import * as git from '../common/git/index.js'
 
-const execa = require('execa')
-const {test, threw} = require('tap')
-const git = require('../common/git/index.js')
 const DOCKER_REGISTRY_HOST = process.env.TEST_DOCKER_REGISTRY || 'localhost:5000'
 
 const stringify = JSON.stringify

@@ -1,9 +1,7 @@
-
-'use strict'
-
-const {test, threw} = require('tap')
-const hbs = require('../../../../lib/handlebars')
-const helpers = require('../../../../lib/handlebars/helpers')
+import tap from 'tap'
+const {test, threw} = tap
+import hbs from '../../../../lib/handlebars/index.js'
+import helpers from '../../../../lib/handlebars/helpers/index.js'
 
 test('handlebars helpers', async (t) => {
   for (const [name, helper] of Object.entries(helpers)) {

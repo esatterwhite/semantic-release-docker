@@ -3,6 +3,6 @@ node_modules/
 compose/
 node_modules/
 coverage/
-release.config.js
+release.config.cjs
 .github/
 .nyc_outpuut/

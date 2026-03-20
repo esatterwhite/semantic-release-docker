@@ -1,8 +1,7 @@
-'use strict'
-
-const path = require('path')
-const {test, threw} = require('tap')
-const buildConfig = require('../../lib/build-config.js')
+import path from 'path'
+import tap from 'tap'
+const {test, threw} = tap
+import buildConfig from '../../lib/build-config.js'
 
 test('build-config', async (t) => {
   t.testdir({

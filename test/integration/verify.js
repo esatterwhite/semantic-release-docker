@@ -1,11 +1,14 @@
-'use strict'
+import crypto from 'crypto'
+import path from 'path'
+import {fileURLToPath} from 'url'
+import sinon from 'sinon'
+import tap from 'tap'
+const {test, threw} = tap
 
-const crypto = require('crypto')
-const sinon = require('sinon')
-const {test, threw} = require('tap')
+import buildConfig from '../../lib/build-config.js'
+import verify from '../../lib/verify.js'
 
-const buildConfig = require('../../lib/build-config.js')
-const verify = require('../../lib/verify.js')
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const DOCKER_REGISTRY_HOST = process.env.TEST_DOCKER_REGISTRY || 'localhost:5000'
 
 const logger = {
@@ -147,7 +150,7 @@ test('steps::verify', async (t) => {
     }
 
     const config = await buildConfig(build_id, {}, context)
-    tt.strictEqual(await verify(config, context), true, 'auth step skipped')
+    tt.equal(await verify(config, context), true, 'auth step skipped')
   })
 
   t.test('unable to collect image name', async (tt) => {
