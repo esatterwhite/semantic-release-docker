@@ -78,7 +78,7 @@
     "tap": "^16.0.0"
   },
   "dependencies": {
-    "@actions/core": "^1.11.1",
+    "@actions/core": "^3.0.0",
     "@semantic-release/error": "^3.0.0",
     "debug": "^4.1.1",
     "execa": "^4.0.2",

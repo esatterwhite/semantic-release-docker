@@ -7,7 +7,6 @@ const execa = require('execa')
 const {WritableStreamBuffer} = require('stream-buffers')
 const {test, threw} = require('tap')
 const git = require('../common/git/index.js')
-const initOrigin = require('../common/git/init-origin.js')
 const DOCKER_REGISTRY_HOST = process.env.TEST_DOCKER_REGISTRY || 'localhost:5000'
 const stringify = JSON.stringify
 
