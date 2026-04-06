@@ -1,5 +1,19 @@
 # Semantic Release Docker
 
+# [6.0.0](https://github.com/esatterwhite/semantic-release-docker/compare/v5.1.1...v6.0.0) (2026-04-06)
+
+
+### Chores
+
+* **ci**: update github workflow for recent version of semantic release [66bfaa4](https://github.com/esatterwhite/semantic-release-docker/commit/66bfaa4d2942f401b0cecab5ec15c3d5396b4606) - Eric Satterwhite
+* **deps**: actions/core@3.0.0 [f24c6ba](https://github.com/esatterwhite/semantic-release-docker/commit/f24c6babf1d51824f16e2333d78142741ad3cefc) - Eric Satterwhite, closes: [#65](https://github.com/esatterwhite/semantic-release-docker/issues/65)
+* **pkg**: fix start / stop scripts [1136737](https://github.com/esatterwhite/semantic-release-docker/commit/1136737172d0977f97541d7332642ebf03fbd647) - Eric Satterwhite
+
+
+### **BREAKING CHANGES**
+
+* **ci:** minimum node versions >=20
+
 ## [5.1.1](https://github.com/esatterwhite/semantic-release-docker/compare/v5.1.0...v5.1.1) (2025-05-24)
 
 
