@@ -1,6 +1,6 @@
 'use strict'
 
-const execa = require('execa')
+const {execa} = require('execa')
 const head = require('./head.js')
 
 module.exports = commit

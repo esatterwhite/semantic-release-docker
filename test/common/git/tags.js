@@ -1,7 +1,7 @@
 'use strict'
 
 const os = require('os')
-const execa = require('execa')
+const {execa} = require('execa')
 
 module.exports = tags
 

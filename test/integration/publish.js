@@ -2,7 +2,7 @@
 
 const crypto = require('crypto')
 const path = require('path')
-const execa = require('execa')
+const {execa} = require('execa')
 const {test, threw} = require('tap')
 const buildConfig = require('../../lib/build-config.js')
 const verify = require('../../lib/verify.js')

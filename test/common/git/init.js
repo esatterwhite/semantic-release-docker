@@ -3,7 +3,7 @@
 const path = require('path')
 const os = require('os')
 const {promises: fs} = require('fs')
-const execa = require('execa')
+const {execa} = require('execa')
 
 module.exports = init
 

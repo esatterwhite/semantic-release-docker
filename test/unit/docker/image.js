@@ -3,7 +3,7 @@
 const os = require('os')
 const path = require('path')
 const crypto = require('crypto')
-const execa = require('execa')
+const {execa} = require('execa')
 const {test, threw} = require('tap')
 const docker = require('../../../lib/docker/index.js')
 
