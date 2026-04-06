@@ -24,7 +24,7 @@ test('array', async (t) => {
         args.push(current.sep)
       }
 
-      t.deepEqual(
+      t.same(
         array.toArray(...args)
       , current.expected
       , current.message || `toArray(${current.value}) == ${current.expected}`

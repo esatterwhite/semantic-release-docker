@@ -147,7 +147,7 @@ test('steps::verify', async (t) => {
     }
 
     const config = await buildConfig(build_id, {}, context)
-    tt.strictEqual(await verify(config, context), true, 'auth step skipped')
+    tt.equal(await verify(config, context), true, 'auth step skipped')
   })
 
   t.test('unable to collect image name', async (tt) => {
