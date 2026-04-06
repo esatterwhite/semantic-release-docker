@@ -12,6 +12,9 @@
     "package.json",
     "index.js"
   ],
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "test": "docker-compose -f compose/base.yml -f compose/test.yml up --exit-code-from semantic-release --force-recreate --remove-orphans --build",
     "start": "docker-compose -f compose/base.yml -f compose/dev.yml up --force-recreate --remove-orphans --build",
@@ -21,8 +24,8 @@
     "lint:fix": "npm run lint -- --fix",
     "local": "env $(cat env/local.env)",
     "pretap": "npm run lint",
-    "release": "semantic-release",
-    "release:dry": "semantic-release --no-ci --dry-run --branches=${BRANCH_NAME:-main}"
+    "release": "npx semantic-release",
+    "release:dry": "npm run release -- --no-ci --dry-run --branches=${BRANCH_NAME:-main}"
   },
   "keywords": [
     "semantic-release"
@@ -66,13 +69,11 @@
     ]
   },
   "devDependencies": {
-    "@codedependant/release-config-npm": "^1.0.4",
-    "@semantic-release/changelog": "^5.0.1",
-    "@semantic-release/git": "^9.0.0",
-    "@semantic-release/github": "^7.0.7",
+    "@codedependant/release-config-core": "^1.1.1",
+    "@semantic-release/changelog": "^6.0.3",
     "eslint": "^8.5.0",
     "eslint-config-codedependant": "^3.0.0",
-    "semantic-release": "17",
+    "semantic-release": "^25.0.3",
     "sinon": "^9.0.2",
     "stream-buffers": "^3.0.3",
     "tap": "^16.0.0"
