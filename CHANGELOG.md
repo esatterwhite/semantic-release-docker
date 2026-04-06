@@ -1,5 +1,12 @@
 # Semantic Release Docker
 
+# [6.1.0](https://github.com/esatterwhite/semantic-release-docker/compare/v6.0.0...v6.1.0) (2026-04-06)
+
+
+### Features
+
+* **image**: allow the network flag to be omitted [3beac6c](https://github.com/esatterwhite/semantic-release-docker/commit/3beac6cbd20f4e5c52129ddba3271ab31555073e) - Eric Satterwhite, closes: [#63](https://github.com/esatterwhite/semantic-release-docker/issues/63)
+
 # [6.0.0](https://github.com/esatterwhite/semantic-release-docker/compare/v5.1.1...v6.0.0) (2026-04-06)
 
 
