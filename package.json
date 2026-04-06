@@ -40,15 +40,10 @@
     "url": "git+ssh://git@github.com/esatterwhite/semantic-release-docker.git"
   },
   "tap": {
-    "ts": false,
-    "jsx": false,
     "timeout": 60,
     "browser": false,
-    "check-coverage": true,
-    "lines": 95,
-    "branches": 95,
-    "statements": 95,
-    "functions": 95,
+    "show-full-coverage": true,
+    "output-file": ".tap-output",
     "files": [
       "test/unit",
       "test/integration"
@@ -60,13 +55,10 @@
       "json-summary",
       "html"
     ],
-    "nyc-arg": [
-      "--exclude=coverage/",
-      "--exclude=test/",
-      "--exclude=.eslintrc.js",
-      "--exclude=release.config.js",
-      "--all"
-    ]
+    "statements": 95,
+    "branches": 95,
+    "lines": 95,
+    "functions": 95
   },
   "devDependencies": {
     "@codedependant/release-config-core": "^1.1.1",
@@ -76,7 +68,7 @@
     "semantic-release": "^25.0.3",
     "sinon": "^9.0.2",
     "stream-buffers": "^3.0.3",
-    "tap": "^16.0.0"
+    "tap": "^21.6.3"
   },
   "dependencies": {
     "@actions/core": "^3.0.0",
