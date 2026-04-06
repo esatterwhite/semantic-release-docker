@@ -73,7 +73,7 @@
   "dependencies": {
     "@actions/core": "^3.0.0",
     "@semantic-release/error": "^3.0.0",
-    "debug": "^4.1.1",
+    "debug": "^4.4.3",
     "execa": "^9.6.1",
     "handlebars": "^4.7.9",
     "object-hash": "^3.0.0",
