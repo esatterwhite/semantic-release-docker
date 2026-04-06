@@ -3,7 +3,7 @@
 const {promisify} = require('util')
 const exec = promisify(require('child_process').exec)
 const {default: sematicRelease} = require('semantic-release')
-const execa = require('execa')
+const {execa} = require('execa')
 const {WritableStreamBuffer} = require('stream-buffers')
 const {test, threw} = require('tap')
 const git = require('../common/git/index.js')

@@ -1,6 +1,6 @@
 'use strict'
 
-const execa = require('execa')
+const {execa} = require('execa')
 const initRemote = require('./init-remote.js')
 
 module.exports = initOrigin
