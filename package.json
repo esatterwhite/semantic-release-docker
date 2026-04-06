@@ -16,9 +16,9 @@
     "node": ">=20"
   },
   "scripts": {
-    "test": "docker-compose -f compose/base.yml -f compose/test.yml up --exit-code-from semantic-release --force-recreate --remove-orphans --build",
-    "start": "docker-compose -f compose/base.yml -f compose/dev.yml up --force-recreate --remove-orphans --build",
-    "stop": "docker-compose -f compose/base.yml -f compose/dev.yml down",
+    "test": "docker compose -f compose/base.yml -f compose/test.yml up --exit-code-from semantic-release --force-recreate --remove-orphans --build",
+    "start": "docker compose -f compose/base.yml -f compose/dev.yml up --force-recreate --remove-orphans --build",
+    "stop": "docker compose -f compose/base.yml -f compose/dev.yml down",
     "tap": "tap",
     "lint": "eslint .",
     "lint:fix": "npm run lint -- --fix",
