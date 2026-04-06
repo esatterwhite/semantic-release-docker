@@ -261,6 +261,29 @@ test('Image', async (t) => {
       , path.join(__dirname, 'fake')
       ], 'build command - quiet = false')
     }
+
+    {
+
+      const img = new docker.Image({
+        name: 'foobar'
+      , registry: 'us.gcr.io'
+      , project: 'esatterwhite'
+      , build_id: '1010101'
+      , cwd: __dirname
+      , network: null
+      , context: path.join(__dirname, 'fake')
+      })
+
+      tt.same(img.build_cmd, [
+        'build'
+      , '--tag'
+      , 'us.gcr.io/esatterwhite/foobar:1010101'
+      , '--quiet'
+      , '-f'
+      , path.join(__dirname, 'Dockerfile')
+      , path.join(__dirname, 'fake')
+      ], 'build cmd without network')
+    }
   })
 
   t.test('image#buildx_cmd', async (t) => {

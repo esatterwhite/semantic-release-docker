@@ -27,7 +27,40 @@ test('build-config', async (t) => {
     tt.match(config, {
       dockerfile: 'Dockerfile'
     , publish: true
+    , network: 'default'
     , nocache: false
+    , tags: ['latest', '{{major}}-latest', '{{version}}']
+    , args: {
+        SRC_DIRECTORY: 'standard'
+      , TARGET_PATH: '.'
+      , NPM_PACKAGE_NAME: 'this-is-not-scoped'
+      , NPM_PACKAGE_SCOPE: null
+      , CONFIG_NAME: 'this-is-not-scoped'
+      , CONFIG_PROJECT: null
+      }
+    , pkg: Object
+    , registry: null
+    , name: 'this-is-not-scoped'
+    , project: null
+    , build: 'id'
+    , context: '.'
+    , quiet: true
+    , clean: true
+    , dry_run: false
+    })
+  })
+
+  t.test('omit network', async (tt) => {
+    const config = await buildConfig('id', {
+      dockerNetwork: null
+    }, {
+      cwd: path.join(t.testdirName, 'standard')
+    })
+    tt.match(config, {
+      dockerfile: 'Dockerfile'
+    , publish: true
+    , nocache: false
+    , network: null
     , tags: ['latest', '{{major}}-latest', '{{version}}']
     , args: {
         SRC_DIRECTORY: 'standard'
