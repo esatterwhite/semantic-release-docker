@@ -29,11 +29,10 @@ test('docker multiple image release', async (t) => {
       , '@codedependant/semantic-release-docker': 'file:../../../'
       }
     })
-  , Dockerfile: 'FROM debian:buster-slim\n\nCMD ["whoami"]'
+  , 'Dockerfile': 'FROM debian:buster-slim\n\nCMD ["whoami"]'
   , 'Dockerfile.alt': 'FROM debian:bullseye-slim\n\nCMD ["whoami"]'
   , '.gitignore': 'node_modules/'
   })
-
 
   await git.init(cwd)
   t.comment('git repo initialized')
