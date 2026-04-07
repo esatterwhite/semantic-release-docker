@@ -382,7 +382,8 @@ test('Image', async (t) => {
       , 'Dockerfile.prepare'
       , 'Dockerfile.post'
       ].sort()
-    , 'files in image context')
+    , 'files in image context'
+    )
   })
 
   t.test('image#tag()', async (tt) => {

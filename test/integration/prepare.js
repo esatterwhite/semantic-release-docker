@@ -106,7 +106,7 @@ test('steps::prepare', async (t) => {
     , dockerImage: 'alternate'
     , dockerBuildQuiet: false
     , dockerBuildFlags: {
-        progress: 'plain'
+        'progress': 'plain'
       , 'no-cache': null
       }
     , dockerArgs: {

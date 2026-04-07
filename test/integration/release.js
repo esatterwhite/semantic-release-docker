@@ -42,7 +42,7 @@ test('docker release', async (t) => {
       , '@codedependant/semantic-release-docker': 'file:../../../'
       }
     })
-  , Dockerfile: 'FROM debian:buster-slim\n\nCMD ["whoami"]'
+  , 'Dockerfile': 'FROM debian:buster-slim\n\nCMD ["whoami"]'
   , '.gitignore': 'node_modules/'
   })
 
@@ -127,7 +127,7 @@ test('buildx release', async (t) => {
       , '@codedependant/semantic-release-docker': 'file:../../../'
       }
     })
-  , Dockerfile: 'FROM debian:buster-slim\n\nCMD ["whoami"]'
+  , 'Dockerfile': 'FROM debian:buster-slim\n\nCMD ["whoami"]'
   , '.gitignore': 'node_modules/'
   })
 

@@ -18,9 +18,9 @@ test('read-pkg', async (t) => {
     const cwd = path.join(fixturedir, 'pkg', 'one')
     const pkg = await readPkg({cwd})
     tt.match(pkg, {
-      name: '@fixture/one'
-    , version: '0.0.0'
-    , private: true
+      'name': '@fixture/one'
+    , 'version': '0.0.0'
+    , 'private': true
     })
   })
 

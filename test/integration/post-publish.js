@@ -16,7 +16,6 @@ const fixturedir = path.join(__dirname, '..', 'fixture')
 
 const DOCKER_REGISTRY_HOST = process.env.TEST_DOCKER_REGISTRY || 'localhost:5000'
 
-
 const logger = {
   success: sinon.stub()
 , info: sinon.stub()
@@ -70,7 +69,6 @@ test('post publish', async (t) => {
       t.same(tags, ['2', '2.0'], 'expect tags exists before succes stage')
     }
 
-
     await success(config, context)
 
     {
@@ -82,7 +80,8 @@ test('post publish', async (t) => {
       t.same(
         stdout.split(os.EOL).filter(Boolean)
       , ['2', '2.0']
-      , 'autoClean=false does not remove local tags with')
+      , 'autoClean=false does not remove local tags with'
+      )
     }
 
     await success(
@@ -102,7 +101,8 @@ test('post publish', async (t) => {
       t.same(
         stdout.split(os.EOL).filter(Boolean)
       , []
-      , 'autoClean=true removes local tags with')
+      , 'autoClean=true removes local tags with'
+      )
     }
   })
 
@@ -152,7 +152,6 @@ test('post publish', async (t) => {
       t.same(tags, ['3', '3.0'], 'expect tags exists before succes stage')
     }
 
-
     await fail(config, context)
 
     {
@@ -164,7 +163,8 @@ test('post publish', async (t) => {
       t.same(
         stdout.split(os.EOL).filter(Boolean)
       , ['3', '3.0']
-      , 'autoClean=false does not remove local tags with')
+      , 'autoClean=false does not remove local tags with'
+      )
     }
 
     await fail(
@@ -184,7 +184,8 @@ test('post publish', async (t) => {
       t.same(
         stdout.split(os.EOL).filter(Boolean)
       , []
-      , 'autoClean=true removes local tags with')
+      , 'autoClean=true removes local tags with'
+      )
     }
   })
 }).catch(threw)
