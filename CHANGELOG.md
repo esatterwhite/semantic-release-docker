@@ -1,5 +1,18 @@
 # Semantic Release Docker
 
+## [6.1.1](https://github.com/esatterwhite/semantic-release-docker/compare/v6.1.0...v6.1.1) (2026-04-07)
+
+
+### Chores
+
+* **dep-dev**: eslint-config-logdna@8.0.1 [5e65753](https://github.com/esatterwhite/semantic-release-docker/commit/5e657535a4cb44d83150847f028a0174b3023059) - Eric Satterwhite
+* **dep-dev**: tap@21.6.3 [d964fa1](https://github.com/esatterwhite/semantic-release-docker/commit/d964fa1ae8b404e1ef06d59c0966fdc3bd07c139) - Eric Satterwhite
+* **deps**: debug@4.4.3 [4cead0d](https://github.com/esatterwhite/semantic-release-docker/commit/4cead0d1aab0609bb4b71d86899bcc908cc894cc) - Eric Satterwhite
+* **dep**: semver@7.7.4 [8766a8c](https://github.com/esatterwhite/semantic-release-docker/commit/8766a8c04c8b8848a3c87a9824b9ed81d62bea03) - Eric Satterwhite
+* **deps**: execa@9.6.1 [0ca2618](https://github.com/esatterwhite/semantic-release-docker/commit/0ca2618e8e7ca81b2439bd66d134ecf3fd0b7e52) - Eric Satterwhite
+* **deps**: handlebars@4.7.9 [2ad82f0](https://github.com/esatterwhite/semantic-release-docker/commit/2ad82f0c077fdd6ef7dbcb4aa1806b726f8d6ed1) - Eric Satterwhite
+* **deps**: semantic-release/error@4.0.0 [afa593b](https://github.com/esatterwhite/semantic-release-docker/commit/afa593bf6d777dccc4eba2d9c0b8f0578ede9b0c) - Eric Satterwhite
+
 # [6.1.0](https://github.com/esatterwhite/semantic-release-docker/compare/v6.0.0...v6.1.0) (2026-04-06)
 
 
