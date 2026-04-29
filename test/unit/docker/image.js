@@ -351,6 +351,8 @@ test('Image', async (t) => {
       , '--platform'
       , 'linux/amd64'
       , '--pull'
+      , '--output'
+      , 'type=cacheonly'
       , '-f'
       , path.join(__dirname, 'Dockerfile')
       , path.join(__dirname, 'fake')

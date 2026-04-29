@@ -98,6 +98,7 @@ test('buildx release', async (t) => {
     , version: '0.0.0-development'
     , scripts: {
         'test-release': 'semantic-release --dry-run'
+      , 'full-release': 'semantic-release'
       }
     , release: {
         ci: true
@@ -106,7 +107,7 @@ test('buildx release', async (t) => {
       , dockerRegistry: DOCKER_REGISTRY_HOST
       , dockerProject: 'docker-release'
       , dockerImage: 'fake'
-      , dockerVerifyBuild: true
+      , dockerVerifyCmd: ['ls']
       , dockerArgs: {
           SAMPLE_THING: '{{type}}.{{version}}'
         , GIT_REF: '{{git_sha}}-{{git_tag}}'
@@ -174,4 +175,39 @@ test('buildx release', async (t) => {
   stream.stdout.pipe(process.stdout)
   await stream
 
+  t.test('full release', async () => {
+    {
+      const stream = execa('npm', [
+        'install'
+      ], {
+        cwd: cwd
+      , env: {
+          BRANCH_NAME: 'main'
+        , CI_BRANCH: 'main'
+        , CI: 'true'
+        , GITHUB_REF: 'refs/heads/main'
+        }
+      })
+
+      stream.stdout.pipe(process.stdout)
+      await stream
+    }
+
+    const stream = execa('npm', [
+      'run'
+    , 'full-release'
+    , `--repositoryUrl=${origin}`], {
+      cwd: cwd
+    , env: {
+        BRANCH_NAME: 'main'
+      , CI_BRANCH: 'main'
+      , CI: 'true'
+      , GITHUB_REF: 'refs/heads/main'
+      , DOCKER_REGISTRY_USER: 'iamweasel'
+      , DOCKER_REGISTRY_PASSWORD: 'secretsquirrel'
+      }
+    })
+    stream.stdout.pipe(process.stdout)
+    await stream
+  })
 }).catch(threw)
