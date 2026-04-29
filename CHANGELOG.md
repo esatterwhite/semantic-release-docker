@@ -1,5 +1,17 @@
 # Semantic Release Docker
 
+# [7.0.0](https://github.com/esatterwhite/semantic-release-docker/compare/v6.1.1...v7.0.0) (2026-04-29)
+
+
+### Bug Fixes
+
+* **docker**: specify an output type during buildx dry run [6508e76](https://github.com/esatterwhite/semantic-release-docker/commit/6508e76483347c51cf3a32b40e8fd3ab2fabdc20) - Eric Satterwhite
+
+
+### **BREAKING CHANGES**
+
+* **docker:** buildx dry-run will specifiy --output type=cacheonly
+
 ## [6.1.1](https://github.com/esatterwhite/semantic-release-docker/compare/v6.1.0...v6.1.1) (2026-04-07)
 
 
