@@ -1,5 +1,23 @@
 # Semantic Release Docker
 
+# [8.0.0](https://github.com/esatterwhite/semantic-release-docker/compare/v7.0.0...v8.0.0) (2026-08-29)
+
+
+### Bug Fixes
+
+* **image**: the allow the provenance flags to be passed through [ccb318d](https://github.com/esatterwhite/semantic-release-docker/commit/ccb318d9bc88b32cab721b81c415fcd350b26d73) - Eric Satterwhite, closes: [#64](https://github.com/esatterwhite/semantic-release-docker/issues/64)
+
+
+### Chores
+
+* **compose**: regenerate ssl certs for compose [a8f9b1a](https://github.com/esatterwhite/semantic-release-docker/commit/a8f9b1aca29b2377dd661d6738efe58575f2a9ff) - Eric Satterwhite
+
+
+### **BREAKING CHANGES**
+
+* **image:** boolean flags ([secure]) are no longer stripped
+* **image:** the provenance flag is no longer removed
+
 # [7.0.0](https://github.com/esatterwhite/semantic-release-docker/compare/v6.1.1...v7.0.0) (2026-04-29)
 
 
