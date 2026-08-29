@@ -23,7 +23,7 @@
     "lint": "eslint .",
     "lint:fix": "npm run lint -- --fix",
     "local": "env $(cat env/local.env)",
-    "pretap": "npm run lint",
+    "pretap": "tap build && npm run lint",
     "release": "npx semantic-release",
     "release:dry": "npm run release -- --no-ci --dry-run --branches=${BRANCH_NAME:-main}"
   },
