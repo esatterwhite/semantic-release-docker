@@ -284,6 +284,62 @@ test('Image', async (t) => {
       , path.join(__dirname, 'fake')
       ], 'build cmd without network')
     }
+
+    {
+      // a `null` flag value or an empty string both render as a bare
+      // flag - this is intentional and must be preserved
+      const img = new docker.Image({
+        name: 'foobar'
+      , registry: 'us.gcr.io'
+      , project: 'esatterwhite'
+      , build_id: '1010101'
+      , cwd: __dirname
+      , context: path.join(__dirname, 'fake')
+      , quiet: false
+      })
+
+      img.flag('pull', null)
+      img.flag('target', '')
+      tt.same(img.build_cmd, [
+        'build'
+      , '--network=default'
+      , '--tag'
+      , 'us.gcr.io/esatterwhite/foobar:1010101'
+      , '--pull'
+      , '--target'
+      , '-f'
+      , path.join(__dirname, 'Dockerfile')
+      , path.join(__dirname, 'fake')
+      ], 'null and empty string flag values render as bare flags')
+    }
+
+    {
+      // boolean flag values must render as --flag=value, otherwise
+      // `false` is dropped as falsey and the flag is read as enabled
+      const img = new docker.Image({
+        name: 'foobar'
+      , registry: 'us.gcr.io'
+      , project: 'esatterwhite'
+      , build_id: '1010101'
+      , cwd: __dirname
+      , context: path.join(__dirname, 'fake')
+      , quiet: false
+      })
+
+      img.flag('provenance', false)
+      img.flag('sbom', true)
+      tt.same(img.build_cmd, [
+        'build'
+      , '--network=default'
+      , '--tag'
+      , 'us.gcr.io/esatterwhite/foobar:1010101'
+      , '--provenance=false'
+      , '--sbom=true'
+      , '-f'
+      , path.join(__dirname, 'Dockerfile')
+      , path.join(__dirname, 'fake')
+      ], 'boolean flag values render as --flag=value')
+    }
   })
 
   t.test('image#buildx_cmd', async (t) => {
@@ -357,6 +413,75 @@ test('Image', async (t) => {
       , path.join(__dirname, 'Dockerfile')
       , path.join(__dirname, 'fake')
       ], 'buildx command')
+    }
+
+    {
+      // provenance attestations generate an image index w/ unknown/unknown manifests
+      // the flag must be passed through as-is for some registries
+      const img = new docker.Image({
+        name: 'foobar'
+      , registry: 'us.gcr.io'
+      , project: 'esatterwhite'
+      , build_id: '1010101'
+      , cwd: __dirname
+      , tags: ['2.0.0']
+      , platform: ['linux/amd64', 'linux/arm64']
+      , context: path.join(__dirname, 'fake')
+      })
+
+      img.flag('provenance', false)
+      img.flag('sbom', false)
+
+      t.same(img.build_cmd, [
+        'buildx'
+      , 'build'
+      , '--network=default'
+      , '--quiet'
+      , '--tag'
+      , 'us.gcr.io/esatterwhite/foobar:2.0.0'
+      , '--provenance=false'
+      , '--sbom=false'
+      , '--platform'
+      , 'linux/amd64,linux/arm64'
+      , '--pull'
+      , '--push'
+      , '-f'
+      , path.join(__dirname, 'Dockerfile')
+      , path.join(__dirname, 'fake')
+      ], 'provenance flag is passed through to buildx')
+    }
+
+    {
+      const img = new docker.Image({
+        name: 'foobar'
+      , registry: 'us.gcr.io'
+      , project: 'esatterwhite'
+      , build_id: '1010101'
+      , cwd: __dirname
+      , tags: ['2.0.0']
+      , platform: ['linux/amd64']
+      , context: path.join(__dirname, 'fake')
+      , dry_run: true
+      })
+
+      img.flag('provenance', 'mode=max')
+
+      t.same(img.build_cmd, [
+        'buildx'
+      , 'build'
+      , '--network=default'
+      , '--quiet'
+      , '--provenance'
+      , 'mode=max'
+      , '--platform'
+      , 'linux/amd64'
+      , '--pull'
+      , '--output'
+      , 'type=cacheonly'
+      , '-f'
+      , path.join(__dirname, 'Dockerfile')
+      , path.join(__dirname, 'fake')
+      ], 'provenance flag is passed through during a dry run')
     }
   })
 

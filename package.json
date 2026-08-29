@@ -44,6 +44,9 @@
     "browser": false,
     "show-full-coverage": true,
     "output-file": ".tap-output",
+    "plugin": [
+      "!@tapjs/typescript"
+    ],
     "files": [
       "test/unit",
       "test/integration"

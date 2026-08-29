@@ -73,6 +73,25 @@ Platform specific builder must be setup and selected for this plugin to utilize 
 > and normal docker commands targeting those images will not work.
 > The `dockerVerifyCmd` behavior will only trigger a build and is unable to execute local command
 
+#### Provenance Attestations
+
+When pushing to a registry, [buildx][] attaches a [provenance attestation][provenance] (`mode=min`) to
+the image index by default. This adds extra `unknown/unknown` manifests to the index, which some
+registries and container runtimes reject outright - notably AWS Lambda container images.
+
+Provenance (and SBOM) attestations can be configured via `dockerBuildFlags`:
+
+```javascript
+{
+  dockerBuildFlags: {
+    provenance: false
+  , sbom: false
+  }
+}
+```
+
+Alternatively, set `BUILDX_NO_DEFAULT_ATTESTATIONS=true` in the environment the release runs in.
+
 ### Build Arguments
 
 By default several build arguments will be included when the docker images is being built.
@@ -327,3 +346,4 @@ $ openssl req -new -newkey rsa:2048 -days 365 -nodes -x509 -keyout server.key -o
 [Number]: https://mdn.io/number
 [--cache-from]: https://docs.docker.com/engine/reference/commandline/build/#cache-from
 [buildx]: https://docs.docker.com/reference/cli/docker/buildx/build
+[provenance]: https://docs.docker.com/build/metadata/attestations/slsa-provenance/#create-provenance-attestations
